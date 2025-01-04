@@ -1,0 +1,43 @@
+@use "../abstracts/" as *;
+
+.login {
+  display: grid;
+  height: 100dvh;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__image-section {
+    padding-top: rem(106);
+    background: clr("white-bg");
+
+    .login__logo {
+      margin-left: rem(95);
+    }
+  }
+
+  &__hero-image {
+    width: rem(600);
+    margin-inline: auto;
+    margin-top: rem(140);
+  }
+  &__form-section {
+    display: grid;
+    place-items: center;
+  }
+
+  // HDR: MOBILE VIEW
+  @include screen("mobile") {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+
+    &__image-section {
+      padding-top: rem(36);
+      .login__logo {
+        margin-left: rem(35);
+      }
+    }
+
+    &__hero-image {
+      display: none;
+    }
+  }
+}

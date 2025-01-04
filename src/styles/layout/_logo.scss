@@ -1,0 +1,16 @@
+@use "../abstracts/" as *;
+
+.home-logo {
+  display: block;
+  width: rem(175);
+  outline: none;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  @include screen("mobile") {
+    width: rem(150);
+  }
+}

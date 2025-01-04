@@ -6,7 +6,7 @@
   $size: map-get($breakpoints, $key);
 
   @if ($size) {
-    @media (width > $size) {
+    @media (width < $size) {
       @content;
     }
   } @else {
