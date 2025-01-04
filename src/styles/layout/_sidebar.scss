@@ -1,0 +1,7 @@
+@use "../abstracts/" as *;
+
+.sidebar {
+  background: clr("white-clr");
+  height: 100%;
+  @include shadow(2px, 0px);
+}

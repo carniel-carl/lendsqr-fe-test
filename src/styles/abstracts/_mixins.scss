@@ -40,10 +40,16 @@
 // HDR: Box Shadow
 @mixin shadow(
   $x-offset: 0px,
-  $y-offset: 4px,
-  $blur-radius: 6px,
+  $y-offset: 2px,
+  $blur-radius: 25px,
   $spread-radius: 0px,
-  $color: rgba(0, 0, 0, 0.2)
+  $color: rgba(0, 0, 0, 0.05)
 ) {
   box-shadow: $x-offset $y-offset $blur-radius $spread-radius $color;
+}
+
+// HDR: Align Items Center
+@mixin alignCenter {
+  display: flex;
+  align-items: center;
 }

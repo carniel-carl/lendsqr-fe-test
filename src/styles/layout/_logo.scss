@@ -10,7 +10,15 @@
     scale: 1.05;
   }
 
+  &.dashboard_logo {
+    width: rem(140);
+  }
+
   @include screen("mobile") {
     width: rem(150);
+
+    &.dashboard_logo {
+      width: rem(120);
+    }
   }
 }

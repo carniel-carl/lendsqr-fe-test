@@ -1,1 +1,14 @@
+@use "../abstracts/" as *;
 @forward "logo";
+@forward "navbar";
+@forward "sidebar";
+
+.admin__layout {
+  height: 100dvh;
+  overflow: hidden;
+  .layout-container {
+    display: flex;
+    gap: rem(20);
+    height: 100%;
+  }
+}
