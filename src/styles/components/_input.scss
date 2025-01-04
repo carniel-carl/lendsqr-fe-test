@@ -1,0 +1,62 @@
+@use "../abstracts/" as *;
+
+.input-field {
+  width: 100%;
+
+  .input {
+    width: 100%;
+    border: rem(2) solid rgba(clr("text-background"), 0.15);
+    border-radius: rem(5);
+    font-family: font("avenir");
+    position: relative;
+
+    &:has(input:focus):not(.error) {
+      border-color: rgba(clr("text-background"), 0.55);
+    }
+
+    &__input {
+      padding: rem(12);
+      outline: none;
+      background: none;
+      outline: none;
+      width: 100%;
+      font-family: inherit;
+      font-weight: 400;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0;
+
+      &::placeholder {
+        font-size: 1rem;
+        font-family: inherit;
+        color: rgba(clr("text"), 0.35);
+      }
+
+      &:focus {
+        border: none;
+      }
+    }
+    .password__btn {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      color: clr("accent");
+      text-transform: uppercase;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: rem(12);
+      font-weight: fw("medium");
+    }
+
+    &.error {
+      border-color: rgba(clr("error"), 0.35);
+
+      .password__btn {
+        color: rgba(clr("error"), 0.5);
+      }
+    }
+  }
+}

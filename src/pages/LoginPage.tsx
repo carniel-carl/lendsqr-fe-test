@@ -15,7 +15,9 @@ const LoginPage = () => {
           />
         </div>
       </div>
-      <div className="login__form-section">form</div>
+      <div className="login__form-section">
+        <h2>Hello</h2>
+      </div>
     </div>
   );
 };
