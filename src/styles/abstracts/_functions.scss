@@ -1,0 +1,17 @@
+@use "sass:math";
+@use "variables" as var;
+
+//HDR: CONVERTS PIXELS TO REM
+@function rem($pixel) {
+  @return math.div($pixel, 16) + rem;
+}
+
+// HDR: Get colour value
+@function clr($name) {
+  @return map-get(var.$colors, $name);
+}
+
+// HDR: Get font weight value
+@function fw($name) {
+  @return map-get(var.$font-weights, $name);
+}

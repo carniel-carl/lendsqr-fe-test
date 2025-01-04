@@ -1,0 +1,7 @@
+@use "../abstracts/" as *;
+
+.form_error {
+  color: clr("error");
+  text-align: center;
+  font-style: italic;
+}
