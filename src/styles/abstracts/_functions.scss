@@ -1,5 +1,7 @@
 @use "sass:math";
+@use "sass:map";
 @use "variables" as var;
+@use "../base/fontface" as font;
 
 //HDR: CONVERTS PIXELS TO REM
 @function rem($pixel) {
@@ -8,10 +10,20 @@
 
 // HDR: Get colour value
 @function clr($name) {
-  @return map-get(var.$colors, $name);
+  @return map.get(var.$colors, $name);
 }
 
 // HDR: Get font weight value
 @function fw($name) {
-  @return map-get(var.$font-weights, $name);
+  @return map.get(var.$font-weights, $name);
+}
+
+// HDR: Get font weight value
+@function fw($name) {
+  @return map.get(var.$font-weights, $name);
+}
+
+// HDR: Get font family
+@function font($family) {
+  @return map.get(font.$fonts, $family);
 }

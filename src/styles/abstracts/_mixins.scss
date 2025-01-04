@@ -1,4 +1,5 @@
 @use "breakpoints" as *;
+@use "functions" as *;
 
 //HDR: Media query
 @mixin screen($key) {
@@ -11,4 +12,37 @@
   } @else {
     @error '`#{$key}` does not exist in the $breakpoints';
   }
+}
+
+// HDR: Button style
+@mixin btnBase {
+  outline: none;
+  border: none;
+  padding: rem(20);
+  cursor: pointer;
+  //   font-family: $ff-red-rose;
+  padding: 0.75em 1.25em;
+  font-size: rem(14);
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  font-weight: fw("semi-bold");
+
+  &:hover {
+    transform: scale(1.2);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 70%;
+  }
+}
+
+// HDR: Box Shadow
+@mixin shadow(
+  $x-offset: 0px,
+  $y-offset: 4px,
+  $blur-radius: 6px,
+  $spread-radius: 0px,
+  $color: rgba(0, 0, 0, 0.2)
+) {
+  box-shadow: $x-offset $y-offset $blur-radius $spread-radius $color;
 }
