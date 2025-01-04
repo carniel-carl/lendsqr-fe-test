@@ -1,0 +1,26 @@
+@use "../abstracts/" as *;
+
+.btn {
+  @include btnBase;
+
+  &__primary {
+    background-color: clr("accent");
+    color: clr("white-clr");
+  }
+  &__secondary {
+    background: none;
+    color: clr("text-background");
+    border: rem(2) solid clr("text-background");
+
+    &:hover {
+      background: rgba(clr("text-background"), 0.6);
+      color: clr("white-clr");
+      transform: scale(1);
+      border-color: transparent;
+    }
+  }
+}
+
+.login_btn {
+  margin-top: rem(10);
+}

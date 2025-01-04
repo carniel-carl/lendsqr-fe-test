@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
+import Button from "../components/Button";
 
 const LoginForm = () => {
   return (
@@ -13,6 +14,7 @@ const LoginForm = () => {
         <Link to="#" className="forget_passowrd__link">
           Forget Password ?
         </Link>
+        <Button className="login_btn">LOG IN</Button>
       </form>
     </div>
   );

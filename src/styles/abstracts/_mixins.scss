@@ -20,15 +20,16 @@
   border: none;
   padding: rem(20);
   cursor: pointer;
-  //   font-family: $ff-red-rose;
-  padding: 0.75em 1.25em;
+  font-family: font(avenir);
+  padding: 1.12em;
   font-size: rem(14);
   transition: all 0.3s ease-in-out;
   user-select: none;
   font-weight: fw("semi-bold");
+  border-radius: rem(8);
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.02);
   }
   &:disabled {
     cursor: not-allowed;

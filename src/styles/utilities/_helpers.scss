@@ -17,4 +17,10 @@
   font-size: rem(12);
   font-family: font("avenir");
   font-weight: fw("medium");
+  width: fit-content;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: rem(4);
+  }
 }
