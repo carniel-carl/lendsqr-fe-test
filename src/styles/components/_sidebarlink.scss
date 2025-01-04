@@ -1,0 +1,30 @@
+@use "../abstracts/" as *;
+
+.sidebar-link {
+  @include alignCenter;
+  gap: rem(10);
+  padding: rem(10) rem(30);
+  position: relative;
+  opacity: 60%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(clr("text-background"), 0.05);
+    opacity: 1;
+  }
+
+  &.active {
+    background: rgba(clr("accent"), 0.08);
+    opacity: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: rem(3);
+      background: clr("accent");
+      left: 0;
+      top: 0;
+    }
+  }
+}

@@ -1,7 +1,43 @@
 @use "../abstracts/" as *;
 
 .sidebar {
+  position: relative;
+
   background: clr("white-clr");
   height: 100%;
-  @include shadow(2px, 0px);
+  @include shadow(0px, 0px);
+  width: rem(250);
+
+  @include screen("mobile") {
+    position: absolute;
+    width: rem(120);
+  }
+
+  &[data-collapsed="true"] {
+    width: rem(400);
+  }
+
+  &__container {
+    margin-block: rem(40);
+    .sidebar__nav {
+      .sidebar__navlink-content {
+        margin-top: rem(25);
+
+        .sidebar__navlink--heading {
+          text-transform: uppercase;
+          font-size: rem(12);
+          color: clr("text-background");
+          margin-left: rem(30);
+          font-weight: fw("medium");
+        }
+
+        .sidebar__navlinks {
+          margin-top: rem(10);
+          display: flex;
+          flex-direction: column;
+          gap: rem(4);
+        }
+      }
+    }
+  }
 }

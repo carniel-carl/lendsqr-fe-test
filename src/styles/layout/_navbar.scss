@@ -3,7 +3,9 @@
 .navbar {
   background: clr("white-clr");
   padding-block: rem(25);
-  padding-inline: rem(20);
+  padding-inline: rem(30);
+  position: relative;
+  z-index: 10;
 
   @include alignCenter;
   @include shadow;
