@@ -1,4 +1,5 @@
 import Logo from "../Layout/Logo";
+import LoginForm from "../Sections/LoginForm";
 import "../styles/pages/login.scss";
 
 const LoginPage = () => {
@@ -16,7 +17,7 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="login__form-section">
-        <h2>Hello</h2>
+        <LoginForm />
       </div>
     </div>
   );

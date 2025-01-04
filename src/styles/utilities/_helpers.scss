@@ -10,3 +10,11 @@
 .form__error {
   border-color: clr("error");
 }
+
+.forget_passowrd__link {
+  color: clr("accent");
+  text-transform: uppercase;
+  font-size: rem(12);
+  font-family: font("avenir");
+  font-weight: fw("medium");
+}
