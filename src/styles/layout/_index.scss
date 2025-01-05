@@ -4,11 +4,10 @@
 @forward "sidebar";
 
 .admin__layout {
-  height: 100dvh;
+  height: 100svh;
   overflow: hidden;
   .layout-container {
     display: flex;
-    // row-gap: rem(20);
     height: 100%;
   }
 }

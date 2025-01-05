@@ -4,12 +4,12 @@ import Sidebar from "./Sidebar";
 import { useState } from "react";
 
 const DashboardLayout = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
   return (
     <div className="admin__layout">
-      <Navbar />
+      <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <div className="layout-container">
-        <Sidebar collapsed={collapsed} />
+        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
         <main>
           <Outlet />
         </main>

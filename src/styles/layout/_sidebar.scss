@@ -2,20 +2,11 @@
 
 .sidebar {
   position: relative;
-
   background: clr("white-clr");
   height: 100%;
   @include shadow(0px, 0px);
   width: rem(270);
-
-  @include screen("mobile") {
-    position: absolute;
-    width: rem(120);
-  }
-
-  &[data-collapsed="true"] {
-    width: rem(400);
-  }
+  z-index: 900;
 
   &__container {
     padding-top: rem(40);
@@ -29,7 +20,7 @@
 
     .sidebar__nav {
       overflow-y: auto;
-      height: 62dvh;
+      height: calc(60dvh - 30px);
 
       padding-bottom: rem(40);
 
@@ -65,5 +56,42 @@
         font-size: rem(12);
       }
     }
+  }
+
+  @include screen("mobile") {
+    position: absolute;
+    left: -100%;
+    height: calc(100svh - 80px);
+    width: rem(300);
+    transition: all 0.9s ease;
+
+    &[data-collapsed="true"] {
+      left: 0;
+    }
+    &__container {
+      padding-top: rem(20);
+      padding-bottom: rem(5);
+
+      .sidebar__nav {
+        padding-bottom: rem(10);
+      }
+    }
+  }
+}
+
+.overlay {
+  background: #000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease 0.2s;
+
+  &.show {
+    opacity: 50%;
+    visibility: visible;
+    transition: opacity 0.8s ease;
   }
 }
