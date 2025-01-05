@@ -1,0 +1,80 @@
+@use "../abstracts/" as *;
+
+.analytics-card {
+  background: clr(white-clr);
+  border-radius: rem(4);
+  border: rem(1) solid rgba(clr("text"), 0.06);
+  @include shadow(3px, 3px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: rem(12);
+  padding: rem(20) rem(30);
+
+  &__icon {
+    width: rem(40);
+    aspect-ratio: 1;
+
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+
+    &.pink {
+      background-color: rgba(clr("pink-clr"), 0.1);
+      color: clr("pink-clr");
+      > svg {
+        stroke: currentColor;
+      }
+    }
+    &.orange {
+      background-color: rgba(clr("orange-clr"), 0.1);
+      color: clr("orange-clr");
+      > svg {
+        stroke: currentColor;
+      }
+    }
+    &.red {
+      background-color: rgba(clr("error"), 0.1);
+      color: clr("error");
+      > svg {
+        stroke: currentColor;
+      }
+    }
+    &.purple {
+      background-color: rgba(clr("purple-clr"), 0.1);
+      color: clr("purple-clr");
+      > svg {
+        stroke: currentColor;
+      }
+    }
+  }
+  &__label {
+    text-transform: uppercase;
+    font-weight: fw("medium");
+    font-size: rem(14);
+    color: clr("text-background");
+  }
+  &__value {
+    font-weight: fw("semi-bold");
+    font-size: rem(24);
+  }
+
+  @include screen("tablet") {
+    gap: rem(8);
+    padding: rem(12) rem(15);
+
+    &__label {
+      font-size: rem(12);
+    }
+  }
+
+  @include screen("mobile") {
+    gap: rem(8);
+    padding: rem(12) rem(15);
+
+    &__label {
+      font-size: rem(12);
+    }
+  }
+}

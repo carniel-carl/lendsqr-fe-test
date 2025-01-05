@@ -6,11 +6,16 @@ type IAProps = {
   href: string;
   title: string;
   active: boolean;
+  onClick: () => void;
 };
 
-const SidebarLink = ({ icon: Icon, href, title, active }: IAProps) => {
+const SidebarLink = ({ icon: Icon, href, title, active, onClick }: IAProps) => {
   return (
-    <Link to={href} className={`sidebar-link ${active && "active"}`}>
+    <Link
+      to={href}
+      className={`sidebar-link ${active && "active"}`}
+      onClick={onClick}
+    >
       <Icon /> <span>{title}</span>
     </Link>
   );

@@ -8,3 +8,10 @@ type SidebarDataType = {
     href: string;
   }[];
 }[];
+
+type UserAnalyticsCardProps = {
+  icon: IconType;
+  label: string;
+  value: number;
+  colour: "pink" | "purple" | "red" | "orange";
+};

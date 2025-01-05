@@ -44,11 +44,11 @@
 
 // HDR: Box Shadow
 @mixin shadow(
-  $x-offset: 0px,
-  $y-offset: 2px,
-  $blur-radius: 25px,
+  $x-offset: 3px,
+  $y-offset: 0px,
+  $blur-radius: 20px,
   $spread-radius: 0px,
-  $color: rgba(0, 0, 0, 0.05)
+  $color: rgba(0, 0, 0, 0.04)
 ) {
   box-shadow: $x-offset $y-offset $blur-radius $spread-radius $color;
 }

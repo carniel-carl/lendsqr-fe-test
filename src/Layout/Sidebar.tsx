@@ -13,6 +13,11 @@ type IAprops = {
 const Sidebar = ({ showSidebar, setShowSidebar }: IAprops) => {
   const pathname = useLocation().pathname;
 
+  // SUB: Close sidebar menu for mobile when link is clicked / navigated
+  const closeSidebarMenu = () => {
+    setShowSidebar(false);
+  };
+
   return (
     <>
       <aside className="sidebar" data-collapsed={showSidebar} id="nav-menu">
@@ -28,6 +33,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }: IAprops) => {
               href="/"
               title="Dashboard"
               icon={FaHome}
+              onClick={closeSidebarMenu}
             />
           </div>
 
@@ -42,6 +48,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }: IAprops) => {
                         <SidebarLink
                           {...link}
                           active={pathname.startsWith(link.href)}
+                          onClick={closeSidebarMenu}
                         />
                       </li>
                     ))}

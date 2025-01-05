@@ -58,10 +58,12 @@
     }
   }
 
-  @include screen("mobile") {
-    position: absolute;
+  @include screen("tablet") {
+    position: fixed;
+    top: calc(100svh - calc(100svh - rem(65)));
     left: -100%;
-    height: calc(100svh - 65px);
+    // height: calc(100svh);
+    height: 100svh;
     width: rem(300);
     transition: all 0.9s ease;
 
