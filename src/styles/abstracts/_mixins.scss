@@ -29,6 +29,7 @@
   font-weight: fw("semi-bold");
   border-radius: rem(8);
   background: none;
+  color: inherit;
 
   &:hover {
     transform: scale(1.02);

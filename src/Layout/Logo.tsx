@@ -6,7 +6,7 @@ type LogoProps = {
 const Logo = ({ dashboard }: LogoProps) => {
   return (
     <Link to="/" className={`home-logo ${dashboard && "dashboard_logo"}`}>
-      <img src="images/full-logo.png" alt="logo" />
+      <img src="/images/full-logo.png" alt="logo" />
     </Link>
   );
 };
