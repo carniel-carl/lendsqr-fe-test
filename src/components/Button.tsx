@@ -12,6 +12,8 @@ const VARIANT = {
   primary: "btn__primary",
   secondary: "btn__secondary",
   neutral: "btn__neutral",
+  danger: "btn__danger",
+  accent: "btn__accent",
 };
 const Button = ({
   className,

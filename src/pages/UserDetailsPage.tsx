@@ -14,6 +14,18 @@ const UserDetailsPage = () => {
         <HiArrowLongLeft size={25} />
         <span>Back to Users</span>
       </Button>
+
+      <div>
+        <h2>User Details </h2>
+        <div>
+          <Button variant="danger" className="action_btn">
+            Blacklist User
+          </Button>
+          <Button variant="accent" className="action_btn">
+            Activate User
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
