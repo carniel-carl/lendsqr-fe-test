@@ -42,6 +42,8 @@ const Navbar = ({ showSidebar, setShowSidebar }: IAprops) => {
           <Input
             placeholder="Search for anything"
             className="navbar__searchbar--input"
+            id="searchInput"
+            variant="search"
           />
           <Button className="navbar__searchbar--btn">
             <IoIosSearch size={22} />

@@ -23,6 +23,7 @@
     .navbar__searchbar {
       width: rem(400);
       position: relative;
+      height: rem(40);
 
       &--btn {
         position: absolute;
@@ -30,10 +31,8 @@
         top: 0;
         border-radius: 0 rem(5) rem(5) 0;
         padding: rem(0);
-        // padding-left: rem(25);
         height: 100%;
         width: rem(56);
-        border: 2px solid transparent;
 
         &:hover {
           transform: scale(1);
@@ -60,6 +59,7 @@
     }
   }
 
+  // HDR: Mobile Style
   @include screen("mobile") {
     column-gap: rem(0);
 
@@ -77,8 +77,25 @@
       flex-direction: column;
       align-items: end;
       .navbar__searchbar {
-        // width: rem(320);
         display: none;
+      }
+    }
+
+    .navbar__nav {
+      @include alignCenter;
+      gap: rem(10);
+
+      .doc_link {
+        text-decoration: underline;
+        &:hover {
+          text-underline-offset: rem(2);
+        }
+      }
+      .avatar {
+        width: rem(35);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        overflow: hidden;
       }
     }
   }

@@ -9,8 +9,20 @@ const LoginForm = () => {
       <p className="login__subheading">Enter details to login.</p>
 
       <form className="login__form">
-        <Input placeholder="Email" type="email" />
-        <Input placeholder="password" type="password" />
+        <Input
+          type="email"
+          id="email"
+          label="Email"
+          variant="primary"
+          placeholder="email"
+        />
+        <Input
+          type="password"
+          id="password"
+          label="Password"
+          variant="primary"
+          placeholder="password"
+        />
         <Link to="#" className="forget_passowrd__link">
           Forget Password ?
         </Link>

@@ -59,6 +59,8 @@ const Sidebar = ({ showSidebar, setShowSidebar }: IAprops) => {
           </div>
         </div>
       </aside>
+
+      {/* SUB: Mobile Menu Navigation background overlay when opened */}
       <div
         className={`overlay ${showSidebar && "show"}`}
         onClick={() => setShowSidebar(false)}

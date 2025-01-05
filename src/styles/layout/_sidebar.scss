@@ -61,7 +61,7 @@
   @include screen("mobile") {
     position: absolute;
     left: -100%;
-    height: calc(100svh - 80px);
+    height: calc(100svh - 65px);
     width: rem(300);
     transition: all 0.9s ease;
 

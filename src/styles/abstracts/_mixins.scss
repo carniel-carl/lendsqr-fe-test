@@ -71,3 +71,40 @@
     display: none;
   }
 }
+
+// HDR: Input Groups
+@mixin primaryInput {
+  label {
+    position: absolute;
+    font-size: 1rem;
+    font-family: inherit;
+    color: rgba(clr("text"), 0.35);
+    top: 50%;
+    transform: translateY(-50%);
+    left: rem(12);
+    transition: all 0.3s ease;
+  }
+
+  &:has(input:focus) .input__label,
+  &:has(input:not(:placeholder-shown)) .input__label {
+    transform: translate(1px, calc(-100% - rem(12))) scale(0.8);
+    left: rem(5);
+    opacity: 1;
+    background-color: clr("white-clr");
+    padding-inline: rem(4);
+    z-index: 6;
+    color: clr("accent");
+  }
+
+  &:has(input:not(:focus)) .input__label {
+    color: rgba(clr("text"), 0.35);
+  }
+
+  .input {
+    &__input {
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+}
