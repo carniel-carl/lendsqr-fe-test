@@ -1,0 +1,15 @@
+@use "../abstracts/" as *;
+
+.userpage {
+  &__heading {
+    font-size: rem(24);
+    font-weight: fw("medium");
+  }
+
+  &__user-tabs {
+    margin-block: rem(40);
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(26);
+  }
+}

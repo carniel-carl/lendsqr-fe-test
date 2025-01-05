@@ -9,5 +9,9 @@
   .layout-container {
     display: flex;
     height: 100%;
+
+    .layout__main {
+      padding: rem(60);
+    }
   }
 }

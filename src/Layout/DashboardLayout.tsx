@@ -10,7 +10,7 @@ const DashboardLayout = () => {
       <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <div className="layout-container">
         <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-        <main>
+        <main className="layout__main">
           <Outlet />
         </main>
       </div>
