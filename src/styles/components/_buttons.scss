@@ -19,8 +19,21 @@
       border-color: transparent;
     }
   }
+  &__neutral {
+    border-radius: 0;
+  }
 }
 
 .login_btn {
   margin-top: rem(10);
+}
+.logout_btn {
+  @include alignCenter;
+  gap: rem(10);
+  font-family: font("worksans");
+  font-weight: fw("normal");
+  padding-inline: rem(30);
+  padding-block: rem(12);
+  width: 100%;
+  color: clr("text-background");
 }

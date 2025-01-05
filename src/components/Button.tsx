@@ -11,6 +11,7 @@ interface ButtonProps
 const VARIANT = {
   primary: "btn__primary",
   secondary: "btn__secondary",
+  neutral: "btn__neutral",
 };
 const Button = ({
   className,

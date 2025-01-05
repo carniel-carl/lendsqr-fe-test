@@ -1,8 +1,9 @@
-import { FaBriefcase, FaHome } from "react-icons/fa";
+import { FaBriefcase, FaHome, FaSignOutAlt } from "react-icons/fa";
 import { sidebarData } from "../data/SidebarData";
 
 import SidebarLink from "../components/SidebarLink";
 import { useLocation } from "react-router-dom";
+import Button from "../components/Button";
 
 const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
   const pathname = useLocation().pathname;
@@ -10,7 +11,7 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
   return (
     <aside className="sidebar" data-collapsed={collapsed && "true"}>
       <div className="sidebar__container">
-        <div>
+        <div className="sidebar__top-content">
           <div>
             <FaBriefcase />
             Switch Organization
@@ -42,6 +43,19 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
             </div>
           ))}
         </nav>
+        <div className="sidebar__bottom-content">
+          {/* <SidebarLink
+            active={pathname === "/"}
+            href="/"
+            title="Logout"
+            icon={FaHome}
+          /> */}
+          <Button variant="neutral" className="logout_btn">
+            <FaSignOutAlt size={18} />
+            <span>Logout</span>
+          </Button>
+          <p className="sidebar__version--text">v1.2.0</p>
+        </div>
       </div>
     </aside>
   );

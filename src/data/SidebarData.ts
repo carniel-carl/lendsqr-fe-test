@@ -1,11 +1,27 @@
-import { FaUserGroup } from "react-icons/fa6";
+import { FaMoneyBillTransfer, FaUserGroup } from "react-icons/fa6";
 import { SidebarDataType } from "../types/types";
 import { HiUserGroup } from "react-icons/hi";
 import { TbMoneybag } from "react-icons/tb";
-import { FaRegHandshake } from "react-icons/fa";
-import { BsPersonCheckFill, BsPersonXFill } from "react-icons/bs";
+import {
+  FaBriefcase,
+  FaChartBar,
+  FaClipboardList,
+  FaCoins,
+  FaRegHandshake,
+  FaScroll,
+  FaSlidersH,
+} from "react-icons/fa";
+import {
+  BsBank2,
+  BsPersonCheckFill,
+  BsPersonFillGear,
+  BsPersonXFill,
+} from "react-icons/bs";
 import { GiReceiveMoney } from "react-icons/gi";
 import { MdSavings } from "react-icons/md";
+import { IoSettings } from "react-icons/io5";
+import { HiPercentBadge } from "react-icons/hi2";
+import { TiRefreshOutline } from "react-icons/ti";
 
 export const sidebarData: SidebarDataType = [
   {
@@ -54,22 +70,77 @@ export const sidebarData: SidebarDataType = [
     ],
   },
   {
-    heading: "Business",
+    heading: "Businesses",
     links: [
       {
         title: "Organization",
         href: "#",
-        icon: FaUserGroup,
+        icon: FaBriefcase,
       },
       {
-        title: "Guarantor",
+        title: "Loan Products",
         href: "#",
-        icon: FaUserGroup,
+        icon: GiReceiveMoney,
       },
       {
-        title: "Loan",
+        title: "Savings Products",
         href: "#",
-        icon: FaUserGroup,
+        icon: BsBank2,
+      },
+      {
+        title: "Fees and Charges",
+        href: "#",
+        icon: FaCoins,
+      },
+      {
+        title: "Transactions",
+        href: "#",
+        icon: FaMoneyBillTransfer,
+      },
+      {
+        title: "Services",
+        href: "#",
+        icon: IoSettings,
+      },
+      {
+        title: "Service Account",
+        href: "#",
+        icon: BsPersonFillGear,
+      },
+      {
+        title: "Settlements",
+        href: "#",
+        icon: FaScroll,
+      },
+      {
+        title: "Reports",
+        href: "#",
+        icon: FaChartBar,
+      },
+    ],
+  },
+  {
+    heading: "Settings",
+    links: [
+      {
+        title: "Preferences",
+        href: "#",
+        icon: FaSlidersH,
+      },
+      {
+        title: "Fees and Pricing",
+        href: "#",
+        icon: HiPercentBadge,
+      },
+      {
+        title: "Audit Logs",
+        href: "#",
+        icon: FaClipboardList,
+      },
+      {
+        title: "Systems Messages",
+        href: "#",
+        icon: TiRefreshOutline,
       },
     ],
   },
