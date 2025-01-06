@@ -1,0 +1,105 @@
+@use "../abstracts/" as *;
+
+$base: "user-details";
+
+.user-details {
+  &__header {
+    @include alignCenter;
+    justify-content: space-between;
+    margin-block: rem(26) rem(46);
+
+    &--heading {
+      font-size: rem(24);
+      font-weight: fw("normal");
+    }
+
+    .#{$base}__actions {
+      @include alignCenter;
+      gap: rem(20);
+    }
+  }
+
+  &__profile {
+    background: clr("white-clr");
+    @include shadow(3px, 5px);
+    border-radius: rem(4);
+    padding: rem(30) rem(30) 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(50);
+
+    .#{$base}__data {
+      @include alignCenter;
+      column-gap: rem(20);
+
+      .#{$base}__avatar {
+        width: rem(100);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        overflow: hidden;
+      }
+
+      .#{$base}__info {
+        @include alignCenter;
+        column-gap: rem(30);
+
+        .vertical__rule {
+          width: rem(1);
+          height: rem(80);
+          background-color: clr("text");
+          opacity: 20%;
+        }
+
+        .#{$base}__name {
+          font-size: rem(22);
+          font-weight: fw("medium");
+          margin-bottom: rem(8);
+        }
+        .#{$base}__code {
+          font-size: rem(14);
+          font-weight: fw("regular");
+          color: clr("text-background");
+        }
+
+        .#{$base}__tier {
+          font-size: rem(14);
+          font-weight: fw("medium");
+          margin-bottom: rem(10);
+          color: clr("text-background");
+        }
+
+        .#{$base}__balance {
+          font-size: rem(22);
+          font-weight: fw("medium");
+          margin-bottom: rem(12);
+        }
+        .#{$base}__account {
+          font-size: rem(12);
+        }
+      }
+    }
+
+    .#{$base}__tabs {
+      display: flex;
+      justify-content: space-between;
+      .#{$base}__tab {
+        @include btnBase;
+        border-radius: 0;
+        padding: rem(10) rem(25);
+        font-weight: fw("normal");
+        font-size: rem(16);
+        border-bottom: rem(2) solid transparent;
+
+        &:hover {
+          transform: scale(1);
+          color: clr("accent");
+        }
+
+        &.active {
+          border-color: clr("accent");
+          color: clr("accent");
+        }
+      }
+    }
+  }
+}

@@ -24,3 +24,8 @@
     text-underline-offset: rem(4);
   }
 }
+
+.space-2 {
+  display: flex;
+  gap: rem(2);
+}

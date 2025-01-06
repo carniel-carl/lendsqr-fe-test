@@ -14,7 +14,7 @@
 
     &:hover {
       transform: scale(1);
-      border-width: rem(1.5);
+      background: rgba(clr("text-background"), 0.2);
     }
   }
 
@@ -22,11 +22,19 @@
     @extend .btn__secondary;
     color: clr("error");
     border-color: clr("error");
+
+    &:hover {
+      background: rgba(clr("error"), 0.2);
+    }
   }
-  &__accent {
+  &__success {
     @extend .btn__secondary;
     color: clr("accent");
     border-color: clr("accent");
+
+    &:hover {
+      background: rgba(clr("accent"), 0.2);
+    }
   }
   &__neutral {
     border-radius: 0;
