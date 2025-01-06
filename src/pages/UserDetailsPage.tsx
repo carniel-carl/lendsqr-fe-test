@@ -3,6 +3,8 @@ import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import "../styles/pages/userdetails.scss";
 import UserProfileHeader from "../Sections/UserProfileHeader";
+import UserProfileData from "../Sections/UserProfileData";
+import { formatObjectToList } from "../lib/utils";
 
 const UserDetailsPage = () => {
   const navigate = useNavigate();
@@ -32,30 +34,43 @@ const UserDetailsPage = () => {
       relationship: "Sister",
     },
   };
+
   return (
     <div className="user-details">
-      <Button variant="neutral" className="back_button" onClick={navigateBack}>
-        <HiArrowLongLeft size={25} />
-        <span>Back to Users</span>
-      </Button>
-
       {/* Header */}
-      <div className="user-details__header">
-        <h2 className="user-details__header--heading">User Details </h2>
-        <div className="user-details__actions">
-          <Button variant="danger" className="action_btn">
-            Blacklist User
-          </Button>
-          <Button variant="success" className="action_btn">
-            Activate User
-          </Button>
+      <div>
+        <Button
+          variant="neutral"
+          className="back_button"
+          onClick={navigateBack}
+        >
+          <HiArrowLongLeft size={25} />
+          <span>Back to Users</span>
+        </Button>
+
+        <div className="user-details__header">
+          <h2 className="user-details__header--heading">User Details </h2>
+          <div className="user-details__actions">
+            <Button variant="danger" className="action_btn">
+              Blacklist User
+            </Button>
+            <Button variant="success" className="action_btn">
+              Activate User
+            </Button>
+          </div>
         </div>
       </div>
-
       {/* Profile */}
       <UserProfileHeader user={user} />
 
-      <div>data</div>
+      {/* Content */}
+      <div className="user-details__content">
+        {/* Personal Information */}
+        <UserProfileData
+          title="Personal Information"
+          data={formatObjectToList(user.guarantor)}
+        />
+      </div>
     </div>
   );
 };

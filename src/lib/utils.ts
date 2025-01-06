@@ -23,3 +23,21 @@ export const formatter = ({
     useGrouping: true,
   });
 };
+
+// HDR: Convert an object to list og object representation
+/**
+ * Converts an object into an array of labeled key-value pairs.
+ *
+ * @param {Object} object - An object containing key-value pairs.
+ * @param {string | number} object[key] - The value associated with each key in the object.
+ *
+ * @returns {Array<{label: string, value: string | number}>} An array of objects, each containing a  label and its value.
+ */
+export const formatObjectToList = (object: {
+  [key: string]: string | number;
+}) => {
+  return Object.entries(object).map(([key, value]) => ({
+    label: key,
+    value: value,
+  }));
+};

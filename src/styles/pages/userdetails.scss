@@ -102,4 +102,12 @@ $base: "user-details";
       }
     }
   }
+
+  &__content {
+    margin-top: rem(30);
+    padding: rem(30);
+    background: clr("white-clr");
+    @include shadow(3px, 5px);
+    border-radius: rem(4);
+  }
 }
