@@ -11,7 +11,7 @@ const UserProfileHeader = ({ user }: any) => {
         </div>
         <div className="user-details__info">
           <div>
-            <h2 className="user-details__name">{user.name}</h2>
+            <h2 className="user-details__name">{user?.["full name"]}</h2>
             <p className="user-details__code">LSQFf587g90</p>
           </div>
           <span className="vertical__rule" />

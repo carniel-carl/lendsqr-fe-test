@@ -109,5 +109,13 @@ $base: "user-details";
     background: clr("white-clr");
     @include shadow(3px, 5px);
     border-radius: rem(4);
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(30);
+
+    // Remove the botom norder on the last div
+    .user-profile-data:last-of-type {
+      border: none;
+    }
   }
 }

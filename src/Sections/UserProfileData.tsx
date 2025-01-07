@@ -1,3 +1,5 @@
+import "../styles/sections/userprofiledata.scss";
+
 type IAProps = {
   title: string;
   data: {
@@ -12,8 +14,8 @@ const UserProfileData = ({ title, data }: IAProps) => {
       <div className="user-profile-data__content">
         {data.map((item, index) => (
           <div key={index} className="user-profile-data__item">
-            <span className="user-profile-data__label">{item.label}</span>
-            <span className="user-profile-data__value">{item.value}</span>
+            <p className="user-profile-data__label">{item.label}</p>
+            <p className="user-profile-data__value">{item.value}</p>
           </div>
         ))}
       </div>

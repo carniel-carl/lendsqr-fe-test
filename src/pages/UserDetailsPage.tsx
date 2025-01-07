@@ -13,7 +13,7 @@ const UserDetailsPage = () => {
     navigate(-1);
   };
   const user = {
-    name: "Grace Effiom",
+    "full name": "Grace Effiom",
     tier: 2,
     balance: 200000,
     account: "9012345678",
@@ -28,7 +28,7 @@ const UserDetailsPage = () => {
       instagram: "@grace_effiom",
     },
     guarantor: {
-      name: "Debby Ogana",
+      "full name": "Debby Ogana",
       phone: "07060780922",
       email: "debby@gmail.com",
       relationship: "Sister",
@@ -63,12 +63,17 @@ const UserDetailsPage = () => {
       {/* Profile */}
       <UserProfileHeader user={user} />
 
-      {/* Content */}
+      {/*SUB: Content */}
       <div className="user-details__content">
         {/* Personal Information */}
         <UserProfileData
-          title="Personal Information"
-          data={formatObjectToList(user.guarantor)}
+          title="Socials"
+          data={formatObjectToList(user?.socials)}
+        />
+        {/* Guaranto */}
+        <UserProfileData
+          title="Guarntor"
+          data={formatObjectToList(user?.guarantor)}
         />
       </div>
     </div>

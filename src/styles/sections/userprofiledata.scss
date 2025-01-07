@@ -1,0 +1,31 @@
+@use "../abstracts/" as *;
+
+$base: "user-profile-data";
+
+.user-profile-data {
+  padding-bottom: rem(28);
+  border-bottom: rem(1) solid rgba(clr("text"), 0.1);
+  &--heading {
+    font-size: rem(16);
+    font-weight: fw("medium");
+  }
+
+  &__content {
+    margin-top: rem(30);
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: rem(18);
+    row-gap: rem(30);
+
+    .#{$base}__item {
+      min-width: rem(230);
+      display: flex;
+      flex-direction: column;
+      gap: rem(8);
+      .#{$base}__label {
+        font-size: rem(12);
+        text-transform: uppercase;
+      }
+    }
+  }
+}
