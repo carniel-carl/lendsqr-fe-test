@@ -32,4 +32,13 @@ type TableProps = {
   columns: Column[];
   data: { [key: string]: any }[];
   rowsPerPage: number;
+  renderActions?: (row: { [key: string]: any }) => React.ReactNode;
+};
+
+type DropdownProps = {
+  children: React.ReactNode;
+  className?: string;
+  trigger: React.ReactNode;
+  showCaret?: boolean;
+  align?: "left" | "right" | "middle";
 };

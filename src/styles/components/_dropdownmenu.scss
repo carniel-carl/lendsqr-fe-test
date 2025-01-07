@@ -1,0 +1,46 @@
+@use "../abstracts/" as *;
+
+.dropdown {
+  width: fit-content;
+  position: relative;
+
+  &__trigger {
+    @include btnBase;
+    padding: 0;
+    @include alignCenter;
+    gap: rem(4);
+    width: fit-content;
+    border-radius: 0;
+    font-weight: fw("medium");
+    font-size: rem(16);
+
+    .trigger__caret {
+      transition: transform 0.2s ease;
+    }
+
+    &.active {
+      .trigger__caret {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-menu__content {
+    position: absolute;
+    top: 150%;
+    right: -160%;
+    z-index: 3;
+    min-width: rem(180);
+
+    &.align {
+      &-left {
+        left: 0;
+        right: auto;
+      }
+      &-right {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}

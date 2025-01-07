@@ -4,10 +4,16 @@ import { HiOutlineUserGroup } from "react-icons/hi";
 import { GrMoney } from "react-icons/gr";
 import { TbReportMoney } from "react-icons/tb";
 
-import "../styles/pages/users.scss";
+import { FaEye } from "react-icons/fa";
+import { BsPersonCheck, BsPersonFillX } from "react-icons/bs";
+
 import Table from "../components/Table";
 import { userData } from "../data/mockData";
 import { Column } from "../types/types";
+import Button from "../components/Button";
+import "../styles/pages/users.scss";
+import DropdownMenu from "../components/DropdownMenu";
+import { MdMoreVert } from "react-icons/md";
 
 const columns: Column[] = [
   { header: "Username", accessor: "username" },
@@ -20,6 +26,26 @@ const columns: Column[] = [
 ];
 
 const UsersPage = () => {
+  const actionsComponet = (data: { [key: string]: any }) => {
+    console.log(data);
+    return (
+      <DropdownMenu trigger={<MdMoreVert size={20} />} showCaret={false}>
+        <Button variant="neutral" className="neutral_link">
+          <FaEye size={18} />
+          <span>View Details</span>
+        </Button>
+        <Button variant="neutral" className="neutral_link">
+          <BsPersonFillX size={18} />
+          <span>Blacklist User</span>
+        </Button>
+        <Button variant="neutral" className="neutral_link">
+          <BsPersonCheck size={18} />
+          <span>Activate User</span>
+        </Button>
+      </DropdownMenu>
+    );
+  };
+
   return (
     <div className="userpage">
       <h1 className="userpage__heading">Users</h1>
@@ -51,7 +77,12 @@ const UsersPage = () => {
         />
       </section>
 
-      <Table columns={columns} data={userData} rowsPerPage={9} />
+      <Table
+        columns={columns}
+        data={userData}
+        rowsPerPage={9}
+        renderActions={actionsComponet}
+      />
     </div>
   );
 };

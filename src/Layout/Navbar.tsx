@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FaRegBell } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Dispatch, SetStateAction } from "react";
+import DropdownMenu from "../components/DropdownMenu";
 
 type IAprops = {
   showSidebar: boolean;
@@ -63,7 +64,9 @@ const Navbar = ({ showSidebar, setShowSidebar }: IAprops) => {
               className="avatar_image"
             />
           </div>
-          <div>Ayodeji</div>
+          <DropdownMenu trigger={<span>Ayodeji</span>} align="right">
+            <p>Hello</p>
+          </DropdownMenu>
         </nav>
       </div>
     </header>
