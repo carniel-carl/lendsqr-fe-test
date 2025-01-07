@@ -80,8 +80,9 @@ const UsersPage = () => {
       <Table
         columns={columns}
         data={userData}
-        rowsPerPage={9}
+        rowsPerPage={8}
         renderActions={actionsComponet}
+        filterHeader
       />
     </div>
   );

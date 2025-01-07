@@ -1,8 +1,16 @@
 import StatusBadge from "./StatusBadge";
 import { formatDateTime, formatter } from "../lib/utils";
 import { TableProps } from "../types/types";
+import DropdownMenu from "./DropdownMenu";
+import { MdFilterList } from "react-icons/md";
 
-const Table = ({ columns, data, rowsPerPage, renderActions }: TableProps) => {
+const Table = ({
+  columns,
+  data,
+  rowsPerPage,
+  renderActions,
+  filterHeader,
+}: TableProps) => {
   //   HDR: Show the number of rows in the table
   const paginatedData = data.slice(0, rowsPerPage);
 
@@ -27,7 +35,16 @@ const Table = ({ columns, data, rowsPerPage, renderActions }: TableProps) => {
             <tr className="table__row">
               {columns.map((column) => (
                 <th key={column.accessor} className="table__head--cell">
-                  {column.header}
+                  <span>{column.header}</span>
+                  {filterHeader && column.accessor !== "actions" && (
+                    <DropdownMenu
+                      trigger={<MdFilterList size={18} />}
+                      className="filter-dropdown"
+                      showCaret={false}
+                    >
+                      <p>Filter options for {column.header}</p>
+                    </DropdownMenu>
+                  )}
                 </th>
               ))}
             </tr>
@@ -57,6 +74,8 @@ const Table = ({ columns, data, rowsPerPage, renderActions }: TableProps) => {
           </tbody>
         </table>
       </div>
+
+      {/*  HDR: Pagination */}
     </section>
   );
 };

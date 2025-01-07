@@ -7,8 +7,8 @@
     margin-bottom: rem(20);
     @include shadow(rem(3), rem(5));
     padding: 0 rem(30) rem(30);
-    max-height: 65svh;
-    overflow-y: auto;
+    // max-height: 65svh;
+    // overflow-y: auto;
 
     @include noScrollBar;
 
@@ -17,27 +17,35 @@
       border-collapse: collapse;
       border-spacing: 0;
       font-size: rem(14);
-      color: clr("text");
+      color: clr("text-background");
       text-align: left;
 
       &__head {
-        position: sticky;
-        top: 0;
+        // position: sticky;
+        // top: 0;
         background-color: clr("white-clr");
         z-index: 10;
 
         &--cell {
+          overflow: visible;
+          position: relative;
           padding-block: rem(23);
-          font-weight: fw("semi-bold");
-          text-transform: uppercase;
-          font-size: rem(12);
+          span {
+            font-weight: fw("semi-bold");
+            text-transform: uppercase;
+            font-size: rem(12);
+          }
+          .filter-dropdown {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: rem(10);
+          }
         }
       }
 
       &__cell {
         padding-block: rem(23);
         border-bottom: 1px solid rgba(clr("text"), 0.1);
-        color: clr("text-background");
       }
 
       &__body .table__row {

@@ -33,6 +33,7 @@ type TableProps = {
   data: { [key: string]: any }[];
   rowsPerPage: number;
   renderActions?: (row: { [key: string]: any }) => React.ReactNode;
+  filterHeader?: boolean;
 };
 
 type DropdownProps = {
