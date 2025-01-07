@@ -1,0 +1,8 @@
+@use "../abstracts/" as *;
+
+.dropdown-box {
+  background: clr("white-clr");
+  border-radius: rem(4);
+  @include shadow(rem(3), rem(5));
+  padding: rem(20);
+}

@@ -70,3 +70,10 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
+.neutral_link {
+  @extend .logout_btn;
+  padding: 0;
+  white-space: nowrap;
+  font-size: rem(14);
+}
