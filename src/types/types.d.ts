@@ -34,6 +34,8 @@ type TableProps = {
   rowsPerPage: number;
   renderActions?: (row: { [key: string]: any }) => React.ReactNode;
   filterHeader?: boolean;
+  showPagination?: boolean;
+  currentPage?: number;
 };
 
 type DropdownProps = {

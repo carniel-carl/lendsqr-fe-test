@@ -14,6 +14,7 @@ import Button from "../components/Button";
 import "../styles/pages/users.scss";
 import DropdownMenu from "../components/DropdownMenu";
 import { MdMoreVert } from "react-icons/md";
+import { useSearchParams } from "react-router-dom";
 
 const columns: Column[] = [
   { header: "Username", accessor: "username" },
@@ -26,6 +27,10 @@ const columns: Column[] = [
 ];
 
 const UsersPage = () => {
+  const [searchParams] = useSearchParams();
+
+  const page = parseInt(searchParams?.get("page") as string) || 1;
+
   const actionsComponet = (data: { [key: string]: any }) => {
     console.log(data);
     return (
@@ -80,9 +85,11 @@ const UsersPage = () => {
       <Table
         columns={columns}
         data={userData}
-        rowsPerPage={8}
+        rowsPerPage={10}
         renderActions={actionsComponet}
         filterHeader
+        showPagination
+        currentPage={page}
       />
     </div>
   );

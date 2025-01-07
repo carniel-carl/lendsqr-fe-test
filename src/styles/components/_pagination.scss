@@ -1,0 +1,56 @@
+@use "../abstracts/" as *;
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: rem(10);
+  margin-block: rem(20);
+
+  &__buttons {
+    @include alignCenter;
+    gap: rem(10);
+
+    .pagination__button {
+      padding: rem(5);
+      color: clr("text-background");
+      opacity: 0.6;
+      font-size: rem(16);
+      font-weight: fw("normal");
+
+      &.active {
+        opacity: 1;
+        font-weight: fw("bold");
+      }
+
+      &--nav {
+        @extend .pagination__button;
+        opacity: 1;
+        background: rgba(clr("text"), 0.1);
+        border-radius: rem(4);
+
+        &:hover {
+          color: clr("text");
+        }
+      }
+    }
+  }
+}
+
+.pagination__button--prev {
+  border-radius: 5px 0 0 5px;
+}
+
+.pagination__button--next {
+  border-radius: 0 5px 5px 0;
+}
+
+.pagination__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination__pages {
+  display: flex;
+  align-items: center;
+}

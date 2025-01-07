@@ -3,6 +3,7 @@ import { formatDateTime, formatter } from "../lib/utils";
 import { TableProps } from "../types/types";
 import DropdownMenu from "./DropdownMenu";
 import { MdFilterList } from "react-icons/md";
+import Pagination from "./Pagination";
 
 const Table = ({
   columns,
@@ -10,6 +11,8 @@ const Table = ({
   rowsPerPage,
   renderActions,
   filterHeader,
+  showPagination,
+  currentPage,
 }: TableProps) => {
   //   HDR: Show the number of rows in the table
   const paginatedData = data.slice(0, rowsPerPage);
@@ -76,6 +79,9 @@ const Table = ({
       </div>
 
       {/*  HDR: Pagination */}
+      {showPagination && (
+        <Pagination currentPage={currentPage as number} totalPages={20} />
+      )}
     </section>
   );
 };
