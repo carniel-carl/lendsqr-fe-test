@@ -1,0 +1,57 @@
+@use "../abstracts/" as *;
+
+.table-section {
+  .table-container {
+    background-color: clr("white-clr");
+    border-radius: rem(4);
+    margin-bottom: rem(20);
+    @include shadow(rem(3) rem(5));
+    padding: 0 rem(30) rem(30);
+    max-height: 65svh;
+    overflow-y: auto;
+
+    @include noScrollBar;
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      font-size: rem(14);
+      color: clr("text");
+      text-align: left;
+
+      thead {
+        position: sticky;
+        top: 0;
+        background-color: clr("white-clr");
+        z-index: 1;
+      }
+
+      td {
+        padding-block: rem(23);
+        border-bottom: 1px solid rgba(clr("text"), 0.1);
+        color: clr("text-background");
+      }
+
+      th {
+        padding-block: rem(23);
+        font-weight: fw("semi-bold");
+        text-transform: uppercase;
+        font-size: rem(12);
+      }
+
+      tbody tr {
+        &:hover {
+          background-color: rgba(clr("text-background"), 0.03);
+        }
+      }
+
+      tbody tr:last-child {
+        td {
+          border-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+}

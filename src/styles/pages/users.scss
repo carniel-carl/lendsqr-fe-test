@@ -13,9 +13,6 @@
     column-gap: rem(26);
     row-gap: rem(10);
   }
-  &__user-table {
-    min-height: 160dvh;
-  }
 
   @include screen("tablet") {
     &__user-tabs {

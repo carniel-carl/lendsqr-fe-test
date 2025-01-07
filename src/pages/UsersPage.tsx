@@ -5,6 +5,17 @@ import { GrMoney } from "react-icons/gr";
 import { TbReportMoney } from "react-icons/tb";
 
 import "../styles/pages/users.scss";
+import Table from "../components/Table";
+import { userData } from "../data/mockData";
+
+const columns = [
+  { header: "Username", accessor: "username" },
+  { header: "Email", accessor: "email" },
+  { header: "Phone Number", accessor: "phone" },
+  { header: "Role", accessor: "role" },
+  { header: "Status", accessor: "status" },
+  { header: "", accessor: "actions" },
+];
 
 const UsersPage = () => {
   return (
@@ -38,7 +49,7 @@ const UsersPage = () => {
         />
       </section>
 
-      <section className="userpage__user-table">Hello</section>
+      <Table columns={columns} data={userData} rowsPerPage={5} />
     </div>
   );
 };
