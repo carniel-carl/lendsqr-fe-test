@@ -5,7 +5,7 @@ export const userData = [
     phone: "123-456-7890",
     role: "Admin",
     status: "Active",
-    actions: "",
+    dateJoined: "2021-01-01T10:33:55.554Z",
   },
   {
     username: "Jane Smith",
@@ -13,7 +13,15 @@ export const userData = [
     phone: "098-765-4321",
     role: "User",
     status: "Inactive",
-    actions: "",
+    dateJoined: "2021-02-01T10:33:55.554Z",
+  },
+  {
+    username: "Liam Scott",
+    email: "liam@gmail.com",
+    phone: "789-789-7890",
+    role: "User",
+    status: "Blacklisted",
+    dateJoined: "2021-03-01T10:33:55.554Z",
   },
   {
     username: "Ola Smith",
@@ -21,15 +29,15 @@ export const userData = [
     phone: "098-765-4321",
     role: "User",
     status: "Pending",
-    actions: "",
+    dateJoined: "2021-04-01T10:33:55.554Z",
   },
   {
     username: "Jane Paul",
     email: "janesjd@gmail.com",
     phone: "098-765-4321",
     role: "User",
-    status: "Active",
-    actions: "",
+    status: "Blacklisted",
+    dateJoined: "2021-05-01T10:33:55.554Z",
   },
   {
     username: "Michael Brown",
@@ -37,7 +45,7 @@ export const userData = [
     phone: "123-123-1234",
     role: "Admin",
     status: "Inactive",
-    actions: "",
+    dateJoined: "2021-06-01T10:33:55.554Z",
   },
   {
     username: "Emily Davis",
@@ -45,7 +53,7 @@ export const userData = [
     phone: "234-234-2345",
     role: "User",
     status: "Pending",
-    actions: "",
+    dateJoined: "2021-07-01T10:33:55.554Z",
   },
   {
     username: "Daniel Wilson",
@@ -53,7 +61,7 @@ export const userData = [
     phone: "345-345-3456",
     role: "User",
     status: "Active",
-    actions: "",
+    dateJoined: "2021-08-01T10:33:55.554Z",
   },
   {
     username: "Sophia Johnson",
@@ -61,7 +69,7 @@ export const userData = [
     phone: "456-456-4567",
     role: "Admin",
     status: "Inactive",
-    actions: "",
+    dateJoined: "2021-09-01T10:33:55.554Z",
   },
   {
     username: "James Lee",
@@ -69,7 +77,7 @@ export const userData = [
     phone: "567-567-5678",
     role: "User",
     status: "Pending",
-    actions: "",
+    dateJoined: "2021-10-01T10:33:55.554Z",
   },
   {
     username: "Olivia Martinez",
@@ -77,7 +85,7 @@ export const userData = [
     phone: "678-678-6789",
     role: "User",
     status: "Active",
-    actions: "",
+    dateJoined: "2021-11-01T10:33:55.554Z",
   },
   {
     username: "William Anderson",
@@ -85,7 +93,7 @@ export const userData = [
     phone: "789-789-7890",
     role: "Admin",
     status: "Inactive",
-    actions: "",
+    dateJoined: "2021-12-01T10:33:55.554Z",
   },
   {
     username: "Ava Thomas",
@@ -93,7 +101,7 @@ export const userData = [
     phone: "890-890-8901",
     role: "User",
     status: "Pending",
-    actions: "",
+    dateJoined: "2022-01-01T10:33:55.554Z",
   },
   {
     username: "Henry Jackson",
@@ -101,7 +109,7 @@ export const userData = [
     phone: "901-901-9012",
     role: "User",
     status: "Active",
-    actions: "",
+    dateJoined: "2022-02-01T10:33:55.554Z",
   },
   {
     username: "Isabella White",
@@ -109,7 +117,7 @@ export const userData = [
     phone: "012-012-0123",
     role: "Admin",
     status: "Inactive",
-    actions: "",
+    dateJoined: "2022-03-01T10:33:55.554Z",
   },
   {
     username: "Lucas Harris",
@@ -117,7 +125,7 @@ export const userData = [
     phone: "123-123-1234",
     role: "User",
     status: "Pending",
-    actions: "",
+    dateJoined: "2022-04-01T10:33:55.554Z",
   },
   {
     username: "Mia Clark",
@@ -125,7 +133,7 @@ export const userData = [
     phone: "234-234-2345",
     role: "User",
     status: "Active",
-    actions: "",
+    dateJoined: "2022-05-01T10:33:55.554Z",
   },
   {
     username: "Alexander Lewis",
@@ -133,7 +141,7 @@ export const userData = [
     phone: "345-345-3456",
     role: "Admin",
     status: "Inactive",
-    actions: "",
+    dateJoined: "2022-06-01T10:33:55.554Z",
   },
   {
     username: "Amelia Walker",
@@ -141,7 +149,7 @@ export const userData = [
     phone: "456-456-4567",
     role: "User",
     status: "Pending",
-    actions: "",
+    dateJoined: "2022-07-01T10:33:55.554Z",
   },
   {
     username: "Ethan Hall",
@@ -149,7 +157,7 @@ export const userData = [
     phone: "567-567-5678",
     role: "User",
     status: "Active",
-    actions: "",
+    dateJoined: "2022-08-01T10:33:55.554Z",
   },
   {
     username: "Charlotte Young",
@@ -157,6 +165,14 @@ export const userData = [
     phone: "678-678-6789",
     role: "Admin",
     status: "Inactive",
-    actions: "",
+    dateJoined: "2022-09-01T10:33:55.554Z",
+  },
+  {
+    username: "Emma Green",
+    email: "emma@gmail.com",
+    phone: "890-890-8901",
+    role: "User",
+    status: "Blacklisted",
+    dateJoined: "2022-10-01T10:33:55.554Z",
   },
 ];

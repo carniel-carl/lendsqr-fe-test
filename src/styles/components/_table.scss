@@ -20,34 +20,46 @@
       color: clr("text");
       text-align: left;
 
-      thead {
+      &__head {
         position: sticky;
         top: 0;
         background-color: clr("white-clr");
         z-index: 1;
+
+        &--cell {
+          padding-block: rem(23);
+          font-weight: fw("semi-bold");
+          text-transform: uppercase;
+          font-size: rem(12);
+        }
       }
 
-      td {
+      &__cell {
         padding-block: rem(23);
         border-bottom: 1px solid rgba(clr("text"), 0.1);
         color: clr("text-background");
       }
 
-      th {
-        padding-block: rem(23);
-        font-weight: fw("semi-bold");
-        text-transform: uppercase;
-        font-size: rem(12);
-      }
-
-      tbody tr {
+      &__body .table__row {
+        position: relative;
         &:hover {
           background-color: rgba(clr("text-background"), 0.03);
         }
+
+        .actions {
+          width: 100%;
+          position: relative;
+          outline: 1px solid rgba(clr("text"), 0.1);
+
+          &__btn {
+            @include btnBase;
+            padding: 0;
+          }
+        }
       }
 
-      tbody tr:last-child {
-        td {
+      &__body .table__row:last-child {
+        .table__cell {
           border-bottom: 0;
           padding-bottom: 0;
         }

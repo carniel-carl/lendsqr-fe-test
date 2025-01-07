@@ -21,3 +21,15 @@ type UserAnalyticsCardProps = {
   value: number;
   colour: "pink" | "purple" | "red" | "orange";
 };
+
+type Column = {
+  header: string;
+  accessor: string;
+  type?: "text" | "number" | "currency" | "date";
+};
+
+type TableProps = {
+  columns: Column[];
+  data: { [key: string]: any }[];
+  rowsPerPage: number;
+};

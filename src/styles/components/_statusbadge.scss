@@ -1,0 +1,35 @@
+@use "../abstracts/" as *;
+
+.badge {
+  --bg-opacity: 0.1;
+  padding: 0.5em 1em;
+  border-radius: rem(100);
+  font-size: rem(14);
+  font-weight: fw("normal");
+  text-align: center;
+  color: clr("text-background");
+
+  &--active {
+    background-color: rgba(clr("active"), var(--bg-opacity));
+    color: clr("active");
+  }
+
+  &--inactive {
+    color: clr("text-background");
+    background-color: rgba(clr("text-background"), var(--bg-opacity));
+  }
+
+  &--pending {
+    background-color: rgba(clr("pending"), var(--bg-opacity));
+    color: clr("pending");
+  }
+
+  &--blacklisted {
+    background-color: rgba(clr("error"), var(--bg-opacity));
+    color: clr("error");
+  }
+
+  &--default {
+    background-color: rgba(clr("text-background"), var(--bg-opacity));
+  }
+}

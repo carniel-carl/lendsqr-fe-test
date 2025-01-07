@@ -1,22 +1,15 @@
 import { useState } from "react";
 import { MdMoreVert } from "react-icons/md";
-
-type Column = {
-  header: string;
-  accessor: string;
-};
-
-type TableProps = {
-  columns: Column[];
-  data: { [key: string]: any }[];
-  rowsPerPage: number;
-};
+import StatusBadge from "./StatusBadge";
+import { formatDateTime, formatter } from "../lib/utils";
+import { TableProps } from "../types/types";
 
 const Table = ({ columns, data, rowsPerPage }: TableProps) => {
   const [dropdownVisible, setDropdownVisible] = useState<{
     [key: number]: boolean;
   }>({});
 
+  //   HDR: Show/hide the dropdown
   const toggleDropdown = (index: number) => {
     setDropdownVisible((prev) => ({
       ...prev,
@@ -24,27 +17,30 @@ const Table = ({ columns, data, rowsPerPage }: TableProps) => {
     }));
   };
 
+  //   HDR: Show the number of rows in the table
   const paginatedData = data.slice(0, rowsPerPage);
 
-  const statusBadge = (status: string) => {
-    const statusClass =
-      {
-        active: "badge--active",
-        inactive: "badge--inactive",
-        pending: "badge--pending",
-      }[status.toLowerCase()] || "badge--default";
-
-    return <span className={`badge ${statusClass}`}>{status}</span>;
+  //   HDR: Format the data on a column
+  const formatData = (value: any, type?: string) => {
+    if (type === "number") {
+      return formatter({}).format(value);
+    } else if (type === "currency") {
+      return formatter({ style: "currency", currency: "NGN" }).format(value);
+    } else if (type === "date") {
+      return formatDateTime(value);
+    }
+    return value;
   };
 
   return (
     <section className="table-section">
+      {/*  HDR: Table component */}
       <div className="table-container">
         <table className="table">
           <thead className="table__head">
             <tr className="table__row">
               {columns.map((column) => (
-                <th key={column.accessor} className="table__col">
+                <th key={column.accessor} className="table__head--cell">
                   {column.header}
                 </th>
               ))}
@@ -54,7 +50,7 @@ const Table = ({ columns, data, rowsPerPage }: TableProps) => {
             {paginatedData.map((row, rowIndex) => (
               <tr key={rowIndex} className="table__row">
                 {columns.map((column) => (
-                  <td key={column.accessor} className="table__col">
+                  <td key={column.accessor} className="table__cell">
                     {column.accessor === "actions" ? (
                       <div className="actions">
                         <button
@@ -64,16 +60,16 @@ const Table = ({ columns, data, rowsPerPage }: TableProps) => {
                           <MdMoreVert size={20} />
                         </button>
                         {dropdownVisible[rowIndex] && (
-                          <div className="dropdown">
+                          <div className="action__dropdown">
                             <div>Edit</div>
                             <div>Delete</div>
                           </div>
                         )}
                       </div>
                     ) : column.accessor === "status" ? (
-                      statusBadge(row[column.accessor])
+                      <StatusBadge status={row[column.accessor]} />
                     ) : (
-                      row[column.accessor]
+                      formatData(row[column.accessor], column.type)
                     )}
                   </td>
                 ))}

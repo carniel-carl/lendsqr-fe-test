@@ -7,12 +7,14 @@ import { TbReportMoney } from "react-icons/tb";
 import "../styles/pages/users.scss";
 import Table from "../components/Table";
 import { userData } from "../data/mockData";
+import { Column } from "../types/types";
 
-const columns = [
+const columns: Column[] = [
   { header: "Username", accessor: "username" },
   { header: "Email", accessor: "email" },
   { header: "Phone Number", accessor: "phone" },
   { header: "Role", accessor: "role" },
+  { header: "Date Joined", accessor: "dateJoined", type: "date" },
   { header: "Status", accessor: "status" },
   { header: "", accessor: "actions" },
 ];
@@ -49,7 +51,7 @@ const UsersPage = () => {
         />
       </section>
 
-      <Table columns={columns} data={userData} rowsPerPage={5} />
+      <Table columns={columns} data={userData} rowsPerPage={9} />
     </div>
   );
 };
