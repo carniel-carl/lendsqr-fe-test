@@ -13,6 +13,7 @@ const Table = ({
   renderActions,
   filterHeader,
   showPagination,
+  renderFilter,
 }: TableProps) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
@@ -58,15 +59,10 @@ const Table = ({
               {columns.map((column) => (
                 <th key={column.accessor} className="table__head--cell">
                   <span>{column.header}</span>
-                  {filterHeader && column.accessor !== "actions" && (
-                    <DropdownMenu
-                      trigger={<MdFilterList size={18} />}
-                      className="filter-dropdown"
-                      showCaret={false}
-                    >
-                      <p>Filter options for {column.header}</p>
-                    </DropdownMenu>
-                  )}
+                  {filterHeader &&
+                    renderFilter &&
+                    column.accessor !== "actions" &&
+                    renderFilter(column.accessor)}
                 </th>
               ))}
             </tr>

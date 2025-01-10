@@ -1,0 +1,16 @@
+@use "../abstracts/" as *;
+.filter-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: rem(20);
+  width: rem(270);
+  margin-block: rem(20);
+
+  &__buttons {
+    margin-top: rem(10);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(14);
+  }
+}

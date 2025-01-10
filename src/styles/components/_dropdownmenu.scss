@@ -29,8 +29,9 @@
     position: absolute;
     top: 150%;
     right: -260%;
-    z-index: 3;
+    z-index: 10;
     min-width: rem(180);
+    width: fit-content;
 
     &.align {
       &-left {
@@ -40,6 +41,11 @@
       &-right {
         left: auto;
         right: 0;
+      }
+      &-center {
+        left: 0;
+        right: 50%;
+        transform: translateX(-50%);
       }
     }
   }

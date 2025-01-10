@@ -72,7 +72,7 @@ const Pagination = ({
     if (totalPages > 2) {
       pages.push(
         <Button
-          key={2}
+          key={3}
           variant="neutral"
           onClick={() => paginationHandler(3)}
           className={`${currentPage === 3 ? "active" : ""} pagination__button`}

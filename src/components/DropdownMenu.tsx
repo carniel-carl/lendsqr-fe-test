@@ -10,6 +10,7 @@ const DropdownMenu = ({
   trigger,
   showCaret = true,
   align = "middle",
+  bordered,
 }: DropdownProps) => {
   const { ref, visible, setVisible } = useClickOutside(false);
 
@@ -25,7 +26,10 @@ const DropdownMenu = ({
       </Button>
 
       {visible && (
-        <DropdownBox className={`dropdown-menu__content align-${align}`}>
+        <DropdownBox
+          className={`dropdown-menu__content align-${align}`}
+          bordered={bordered}
+        >
           {children}
         </DropdownBox>
       )}

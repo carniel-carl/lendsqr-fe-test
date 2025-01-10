@@ -34,6 +34,7 @@ type TableProps = {
   renderActions?: (row: { [key: string]: any }) => React.ReactNode;
   filterHeader?: boolean;
   showPagination?: boolean;
+  renderFilter?: (column: string) => React.ReactNode;
 };
 
 type DropdownProps = {
@@ -41,5 +42,6 @@ type DropdownProps = {
   className?: string;
   trigger: React.ReactNode;
   showCaret?: boolean;
-  align?: "left" | "right" | "middle";
+  align?: "left" | "right" | "middle" | "center";
+  bordered?: boolean;
 };

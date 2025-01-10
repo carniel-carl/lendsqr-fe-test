@@ -5,4 +5,8 @@
   border-radius: rem(4);
   @include shadow(rem(0), rem(0));
   padding: rem(20);
+
+  &.bordered {
+    border: rem(1) solid rgba(clr("text-background"), 0.14);
+  }
 }

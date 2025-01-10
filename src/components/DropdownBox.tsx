@@ -1,10 +1,18 @@
-import { HTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-const DropdownBox = ({
-  className = "",
-  ...props
-}: HTMLAttributes<HTMLDivElement>) => {
-  return <div className={`dropdown-box ${className}`} {...props} />;
+interface IAProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  bordered?: boolean;
+  className?: string;
+}
+
+const DropdownBox = ({ className = "", bordered, ...props }: IAProps) => {
+  return (
+    <div
+      className={`dropdown-box ${className} ${bordered ? "bordered" : ""}`}
+      {...props}
+    />
+  );
 };
 
 export default DropdownBox;

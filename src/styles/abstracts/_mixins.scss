@@ -109,3 +109,12 @@
     }
   }
 }
+
+// HDR: Label
+@mixin label {
+  display: block;
+  margin-bottom: rem(6);
+  color: clr("text-background");
+  font-size: rem(14);
+  font-weight: fw("medium");
+}

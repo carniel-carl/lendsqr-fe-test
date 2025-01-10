@@ -82,8 +82,7 @@
     // HDR: Regualar Input group style
     &.regular {
       .input__label {
-        display: block;
-        margin-bottom: rem(6);
+        @include label;
       }
       .input .input__input {
         padding: rem(12);
