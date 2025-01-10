@@ -9,13 +9,13 @@ import { BsPersonCheck, BsPersonFillX } from "react-icons/bs";
 
 import Table from "../components/Table";
 import { userData } from "../data/mockData";
-import { Column } from "../types/types";
+import { Column, FilterDataType } from "../types/types";
 import Button from "../components/Button";
 import "../styles/pages/users.scss";
 import DropdownMenu from "../components/DropdownMenu";
 import { MdFilterList, MdMoreVert } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useCallback, useMemo } from "react";
 import FilterComponent from "../components/FilterComponent";
 
 const columns: Column[] = [
@@ -30,6 +30,43 @@ const columns: Column[] = [
 
 const UsersPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const filterParams = JSON.parse(searchParams.get("query") || "{}");
+
+  //HDR: Function to filter data based on filterParams
+  const filterData = (data: { [key: string]: any }[]) => {
+    const options: FilterDataType = filterParams;
+
+    let filterData = data;
+
+    if (options?.username) {
+      filterData = filterData.filter((item) =>
+        item.username?.toLowerCase().includes(options.username!.toLowerCase())
+      );
+    }
+    if (options?.email) {
+      filterData = filterData.filter(
+        (item) => item.email?.toLowerCase() === options.email!.toLowerCase()
+      );
+    }
+    if (options?.phone) {
+      filterData = filterData.filter((item) =>
+        item.phone?.toLowerCase().includes(options.phone!.toLowerCase())
+      );
+    }
+    if (options?.dateJoined) {
+      filterData = filterData.filter((item) =>
+        item.dateJoined
+          ?.toLowerCase()
+          .includes(options.dateJoined!.toLowerCase())
+      );
+    }
+    return filterData;
+  };
+
+  const data = useMemo(() => {
+    return filterData(userData);
+  }, [filterParams]);
 
   // HDR: Render Action Component
   const actionsComponet = useCallback((data: { [key: string]: any }) => {
@@ -59,6 +96,9 @@ const UsersPage = () => {
 
   // HDR: Render Filter Component
   const filterComponent = useCallback((column: string) => {
+    const closeDropdown = () => {
+      closeDropdown();
+    };
     return (
       <DropdownMenu
         trigger={<MdFilterList size={18} />}
@@ -67,12 +107,11 @@ const UsersPage = () => {
         align="center"
         bordered
       >
-        <FilterComponent name={column} />
+        <FilterComponent name={column} closeDropdown={closeDropdown} />
       </DropdownMenu>
     );
   }, []);
 
-  console.log("Render Filter Component");
   return (
     <div className="userpage">
       <h1 className="userpage__heading">Users</h1>
@@ -106,7 +145,7 @@ const UsersPage = () => {
 
       <Table
         columns={columns}
-        data={userData}
+        data={data}
         renderActions={actionsComponet}
         filterHeader
         showPagination

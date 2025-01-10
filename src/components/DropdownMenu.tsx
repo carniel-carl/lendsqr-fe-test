@@ -3,6 +3,7 @@ import useClickOutside from "../hooks/useClickOutside";
 import Button from "./Button";
 import DropdownBox from "./DropdownBox";
 import { DropdownProps } from "../types/types";
+import React from "react";
 
 const DropdownMenu = ({
   children,
@@ -13,6 +14,10 @@ const DropdownMenu = ({
   bordered,
 }: DropdownProps) => {
   const { ref, visible, setVisible } = useClickOutside(false);
+
+  const closeDropdown = () => {
+    setVisible(false);
+  };
 
   return (
     <div className={`dropdown ${className}`} ref={ref}>
@@ -30,7 +35,12 @@ const DropdownMenu = ({
           className={`dropdown-menu__content align-${align}`}
           bordered={bordered}
         >
-          {children}
+          {React.Children.map(children, (child) =>
+            React.isValidElement(child)
+              ? //@ts-ignore
+                React.cloneElement(child, { closeDropdown })
+              : child
+          )}
         </DropdownBox>
       )}
     </div>

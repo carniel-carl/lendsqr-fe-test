@@ -45,3 +45,9 @@ type DropdownProps = {
   align?: "left" | "right" | "middle" | "center";
   bordered?: boolean;
 };
+type FilterDataType = {
+  username?: string;
+  email?: string;
+  phone?: string;
+  dateJoined?: string;
+};
