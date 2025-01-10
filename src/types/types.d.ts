@@ -50,4 +50,6 @@ type FilterDataType = {
   email?: string;
   phone?: string;
   dateJoined?: string;
+  status?: string;
+  organisation?: string;
 };

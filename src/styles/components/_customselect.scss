@@ -1,0 +1,27 @@
+@use "../abstracts/" as *;
+
+.select-wrapper {
+  position: relative;
+
+  .custom-select__arrow {
+    position: absolute;
+    right: rem(10);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .custom-select {
+    min-width: rem(80);
+    width: 100%;
+    font-size: rem(14);
+    padding: rem(20) rem(12);
+    border-radius: rem(8);
+    color: clr("text-background");
+    cursor: pointer;
+    outline: none;
+    border: rem(1) solid rgba(clr("text"), 0.2);
+    appearance: none;
+    &:focus {
+      outline: rem(1) solid clr("accent");
+    }
+  }
+}

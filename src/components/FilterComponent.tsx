@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 import { useSearchParams } from "react-router-dom";
 import { FilterDataType } from "../types/types";
+import CustomSelect from "./CustomSelect";
+import { organisationsData } from "../data/organisations-data";
+import { statusData } from "../data/status-data";
 
 type IAProps = {
   name: string;
@@ -16,22 +19,29 @@ const FilterComponent = ({ name, closeDropdown }: IAProps) => {
     username: filterParams.username || "",
     email: filterParams.email || "",
     phone: filterParams.phone || "",
+    organisation: filterParams.organisation || "",
+    status: filterParams.status || "",
     dateJoined: filterParams.dateJoined || "",
   });
 
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const selectRef = useRef<HTMLSelectElement | null>(null);
 
   const componentName = name.toLowerCase();
 
   //   HDR: Focus on the dropdown element
   useEffect(() => {
-    if (inputRef.current) {
+    if (selectRef.current && !inputRef.current) {
+      selectRef.current.focus();
+    } else if (inputRef.current) {
       inputRef.current.focus();
     }
   }, [componentName]);
 
   //   HDR: Change handler function
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFilterData((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -64,8 +74,33 @@ const FilterComponent = ({ name, closeDropdown }: IAProps) => {
     closeDropdown();
   };
 
+  const organisations = useMemo(() => {
+    return organisationsData.map((item) => {
+      return { value: item, label: item.toUpperCase() };
+    });
+  }, []);
+  const status = useMemo(() => {
+    return statusData.map((item) => {
+      return { value: item, label: item.toUpperCase() };
+    });
+  }, []);
+
   return (
     <form onSubmit={submitHandler} className="filter-component">
+      <div>
+        <label className="label" htmlFor="organisation">
+          Organisation
+        </label>
+
+        <CustomSelect
+          id="organisation"
+          options={organisations}
+          ref={componentName === "organisation" ? selectRef : null}
+          onChange={changeHandler}
+          value={filterData.organisation}
+          name="organisation"
+        />
+      </div>
       <div>
         <Input
           ref={componentName === "username" ? inputRef : null}
@@ -75,6 +110,7 @@ const FilterComponent = ({ name, closeDropdown }: IAProps) => {
           name="username"
           onChange={changeHandler}
           value={filterData.username}
+          id="username"
         />
       </div>
       <div>
@@ -87,6 +123,7 @@ const FilterComponent = ({ name, closeDropdown }: IAProps) => {
           type="email"
           onChange={changeHandler}
           value={filterData.email}
+          id="email"
         />
       </div>
       <div>
@@ -99,6 +136,7 @@ const FilterComponent = ({ name, closeDropdown }: IAProps) => {
           type="phone"
           onChange={changeHandler}
           value={filterData.phone}
+          id="phone"
         />
       </div>
       <div>
@@ -111,6 +149,21 @@ const FilterComponent = ({ name, closeDropdown }: IAProps) => {
           type="date"
           onChange={changeHandler}
           value={filterData.dateJoined}
+          id="dateJoined"
+        />
+      </div>
+      <div>
+        <label className="label" htmlFor="organisation">
+          Status
+        </label>
+
+        <CustomSelect
+          id="status"
+          options={status}
+          ref={componentName === "status" ? selectRef : null}
+          onChange={changeHandler}
+          value={filterData.status}
+          name="status"
         />
       </div>
       <div className="filter-component__buttons">

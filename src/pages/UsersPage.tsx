@@ -19,10 +19,10 @@ import { useCallback, useMemo } from "react";
 import FilterComponent from "../components/FilterComponent";
 
 const columns: Column[] = [
+  { header: "Organisation", accessor: "organisation" },
   { header: "Username", accessor: "username" },
   { header: "Email", accessor: "email" },
   { header: "Phone Number", accessor: "phone" },
-  { header: "Role", accessor: "role" },
   { header: "Date Joined", accessor: "dateJoined", type: "date" },
   { header: "Status", accessor: "status" },
   { header: "", accessor: "actions" },
@@ -34,35 +34,50 @@ const UsersPage = () => {
   const filterParams = JSON.parse(searchParams.get("query") || "{}");
 
   //HDR: Function to filter data based on filterParams
-  const filterData = (data: { [key: string]: any }[]) => {
-    const options: FilterDataType = filterParams;
+  const filterData = useCallback(
+    (data: { [key: string]: any }[]) => {
+      const options: FilterDataType = filterParams;
 
-    let filterData = data;
+      let filterData = data;
 
-    if (options?.username) {
-      filterData = filterData.filter((item) =>
-        item.username?.toLowerCase().includes(options.username!.toLowerCase())
-      );
-    }
-    if (options?.email) {
-      filterData = filterData.filter(
-        (item) => item.email?.toLowerCase() === options.email!.toLowerCase()
-      );
-    }
-    if (options?.phone) {
-      filterData = filterData.filter((item) =>
-        item.phone?.toLowerCase().includes(options.phone!.toLowerCase())
-      );
-    }
-    if (options?.dateJoined) {
-      filterData = filterData.filter((item) =>
-        item.dateJoined
-          ?.toLowerCase()
-          .includes(options.dateJoined!.toLowerCase())
-      );
-    }
-    return filterData;
-  };
+      if (options?.username) {
+        filterData = filterData.filter((item) =>
+          item.username?.toLowerCase().includes(options.username!.toLowerCase())
+        );
+      }
+      if (options?.email) {
+        filterData = filterData.filter(
+          (item) => item.email?.toLowerCase() === options.email!.toLowerCase()
+        );
+      }
+      if (options?.organisation) {
+        filterData = filterData.filter(
+          (item) =>
+            item.organisation?.toLowerCase() ===
+            options.organisation!.toLowerCase()
+        );
+      }
+      if (options?.status) {
+        filterData = filterData.filter(
+          (item) => item.status?.toLowerCase() === options.status!.toLowerCase()
+        );
+      }
+      if (options?.phone) {
+        filterData = filterData.filter((item) =>
+          item.phone?.toLowerCase().includes(options.phone!.toLowerCase())
+        );
+      }
+      if (options?.dateJoined) {
+        filterData = filterData.filter((item) =>
+          item.dateJoined
+            ?.toLowerCase()
+            .includes(options.dateJoined!.toLowerCase())
+        );
+      }
+      return filterData;
+    },
+    [userData, filterParams]
+  );
 
   const data = useMemo(() => {
     return filterData(userData);

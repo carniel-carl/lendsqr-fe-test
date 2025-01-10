@@ -6,6 +6,7 @@ export const userData = [
     role: "Admin",
     status: "Active",
     dateJoined: "2021-01-01T10:33:55.554Z",
+    organisation: "Innovate Horizon",
   },
   {
     username: "Jane Smith",
@@ -14,6 +15,7 @@ export const userData = [
     role: "User",
     status: "Inactive",
     dateJoined: "2021-02-01T10:33:55.554Z",
+    organisation: "GreenFuture Alliance",
   },
   {
     username: "Liam Scott",
@@ -22,6 +24,7 @@ export const userData = [
     role: "User",
     status: "Blacklisted",
     dateJoined: "2021-03-01T10:33:55.554Z",
+    organisation: "Pioneer Nexus Group",
   },
   {
     username: "Ola Smith",
@@ -30,6 +33,7 @@ export const userData = [
     role: "User",
     status: "Pending",
     dateJoined: "2021-04-01T10:33:55.554Z",
+    organisation: "Unity Care Foundation",
   },
   {
     username: "Jane Paul",
@@ -38,6 +42,7 @@ export const userData = [
     role: "User",
     status: "Blacklisted",
     dateJoined: "2021-05-01T10:33:55.554Z",
+    organisation: "AspireTech Solutions",
   },
   {
     username: "Michael Brown",
@@ -46,6 +51,7 @@ export const userData = [
     role: "Admin",
     status: "Inactive",
     dateJoined: "2021-06-01T10:33:55.554Z",
+    organisation: "EcoSphere Initiative",
   },
   {
     username: "Emily Davis",
@@ -54,6 +60,7 @@ export const userData = [
     role: "User",
     status: "Pending",
     dateJoined: "2021-07-01T10:33:55.554Z",
+    organisation: "Global Harmony Network",
   },
   {
     username: "Daniel Wilson",
@@ -62,6 +69,7 @@ export const userData = [
     role: "User",
     status: "Active",
     dateJoined: "2021-08-01T10:33:55.554Z",
+    organisation: "Vertex Industries",
   },
   {
     username: "Sophia Johnson",
@@ -70,6 +78,7 @@ export const userData = [
     role: "Admin",
     status: "Inactive",
     dateJoined: "2021-09-01T10:33:55.554Z",
+    organisation: "BrightPath Education",
   },
   {
     username: "James Lee",
@@ -78,6 +87,7 @@ export const userData = [
     role: "User",
     status: "Pending",
     dateJoined: "2021-10-01T10:33:55.554Z",
+    organisation: "VitalCore Health",
   },
   {
     username: "Olivia Martinez",
@@ -86,6 +96,7 @@ export const userData = [
     role: "User",
     status: "Active",
     dateJoined: "2021-11-01T10:33:55.554Z",
+    organisation: "Innovate Horizon",
   },
   {
     username: "William Anderson",
@@ -94,6 +105,7 @@ export const userData = [
     role: "Admin",
     status: "Inactive",
     dateJoined: "2021-12-01T10:33:55.554Z",
+    organisation: "GreenFuture Alliance",
   },
   {
     username: "Ava Thomas",
@@ -102,6 +114,7 @@ export const userData = [
     role: "User",
     status: "Pending",
     dateJoined: "2022-01-01T10:33:55.554Z",
+    organisation: "Pioneer Nexus Group",
   },
   {
     username: "Henry Jackson",
@@ -110,6 +123,7 @@ export const userData = [
     role: "User",
     status: "Active",
     dateJoined: "2022-02-01T10:33:55.554Z",
+    organisation: "Unity Care Foundation",
   },
   {
     username: "Isabella White",
@@ -118,6 +132,7 @@ export const userData = [
     role: "Admin",
     status: "Inactive",
     dateJoined: "2022-03-01T10:33:55.554Z",
+    organisation: "AspireTech Solutions",
   },
   {
     username: "Lucas Harris",
@@ -126,6 +141,7 @@ export const userData = [
     role: "User",
     status: "Pending",
     dateJoined: "2022-04-01T10:33:55.554Z",
+    organisation: "EcoSphere Initiative",
   },
   {
     username: "Mia Clark",
@@ -134,6 +150,7 @@ export const userData = [
     role: "User",
     status: "Active",
     dateJoined: "2022-05-01T10:33:55.554Z",
+    organisation: "Global Harmony Network",
   },
   {
     username: "Alexander Lewis",
@@ -142,6 +159,7 @@ export const userData = [
     role: "Admin",
     status: "Inactive",
     dateJoined: "2022-06-01T10:33:55.554Z",
+    organisation: "Vertex Industries",
   },
   {
     username: "Amelia Walker",
@@ -150,6 +168,7 @@ export const userData = [
     role: "User",
     status: "Pending",
     dateJoined: "2022-07-01T10:33:55.554Z",
+    organisation: "BrightPath Education",
   },
   {
     username: "Ethan Hall",
@@ -158,6 +177,7 @@ export const userData = [
     role: "User",
     status: "Active",
     dateJoined: "2022-08-01T10:33:55.554Z",
+    organisation: "VitalCore Health",
   },
   {
     username: "Charlotte Young",
@@ -166,6 +186,7 @@ export const userData = [
     role: "Admin",
     status: "Inactive",
     dateJoined: "2022-09-01T10:33:55.554Z",
+    organisation: "Innovate Horizon",
   },
   {
     username: "Emma Green",
@@ -174,5 +195,6 @@ export const userData = [
     role: "User",
     status: "Blacklisted",
     dateJoined: "2022-10-01T10:33:55.554Z",
+    organisation: "GreenFuture Alliance",
   },
 ];

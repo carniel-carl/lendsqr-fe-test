@@ -68,8 +68,14 @@ const Table = ({
             </tr>
           </thead>
           <tbody className="table__body">
-            {paginatedData.map((row, rowIndex) => {
-              return (
+            {paginatedData.length === 0 ? (
+              <tr className="table__row">
+                <td className="table__cell empty" colSpan={columns.length}>
+                  No Data
+                </td>
+              </tr>
+            ) : (
+              paginatedData.map((row, rowIndex) => (
                 <tr key={rowIndex} className="table__row">
                   {columns.map((column) => (
                     <td key={column.accessor} className="table__cell">
@@ -87,8 +93,8 @@ const Table = ({
                     </td>
                   ))}
                 </tr>
-              );
-            })}
+              ))
+            )}
           </tbody>
         </table>
       </div>

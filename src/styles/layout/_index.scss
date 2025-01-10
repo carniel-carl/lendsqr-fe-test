@@ -14,7 +14,7 @@
       flex: 1;
       padding: rem(60);
       margin-bottom: rem(80);
-      overflow-y: auto;
+      overflow-y: scroll;
 
       @include screen("tablet") {
         padding: rem(40);

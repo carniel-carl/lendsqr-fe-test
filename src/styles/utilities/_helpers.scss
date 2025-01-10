@@ -39,3 +39,7 @@
   flex-direction: column;
   gap: rem(20);
 }
+
+.label {
+  @include label;
+}

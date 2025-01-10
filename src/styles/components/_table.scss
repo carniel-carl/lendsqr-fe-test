@@ -46,6 +46,13 @@
       &__cell {
         padding-block: rem(23);
         border-bottom: 1px solid rgba(clr("text"), 0.1);
+
+        &.empty {
+          text-align: center;
+          font-style: italic;
+          padding-block: rem(60);
+          border-bottom: 0;
+        }
       }
 
       &__body .table__row {
@@ -56,7 +63,7 @@
       }
 
       &__body .table__row:last-child {
-        .table__cell {
+        .table__cell:not(.empty) {
           border-bottom: 0;
           padding-bottom: 0;
         }
