@@ -31,11 +31,9 @@ type Column = {
 type TableProps = {
   columns: Column[];
   data: { [key: string]: any }[];
-  rowsPerPage: number;
   renderActions?: (row: { [key: string]: any }) => React.ReactNode;
   filterHeader?: boolean;
   showPagination?: boolean;
-  currentPage?: number;
 };
 
 type DropdownProps = {

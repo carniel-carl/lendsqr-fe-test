@@ -14,7 +14,8 @@ import Button from "../components/Button";
 import "../styles/pages/users.scss";
 import DropdownMenu from "../components/DropdownMenu";
 import { MdMoreVert } from "react-icons/md";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useCallback } from "react";
 
 const columns: Column[] = [
   { header: "Username", accessor: "username" },
@@ -27,15 +28,16 @@ const columns: Column[] = [
 ];
 
 const UsersPage = () => {
-  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
-  const page = parseInt(searchParams?.get("page") as string) || 1;
-
-  const actionsComponet = (data: { [key: string]: any }) => {
-    console.log(data);
+  const actionsComponet = useCallback((data: { [key: string]: any }) => {
     return (
       <DropdownMenu trigger={<MdMoreVert size={20} />} showCaret={false}>
-        <Button variant="neutral" className="neutral_link">
+        <Button
+          variant="neutral"
+          className="neutral_link"
+          onClick={() => navigate(`/users/${data.username}`)}
+        >
           <FaEye size={18} />
           <span>View Details</span>
         </Button>
@@ -49,7 +51,7 @@ const UsersPage = () => {
         </Button>
       </DropdownMenu>
     );
-  };
+  }, []);
 
   return (
     <div className="userpage">
@@ -85,11 +87,9 @@ const UsersPage = () => {
       <Table
         columns={columns}
         data={userData}
-        rowsPerPage={10}
         renderActions={actionsComponet}
         filterHeader
         showPagination
-        currentPage={page}
       />
     </div>
   );

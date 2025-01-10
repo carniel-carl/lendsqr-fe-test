@@ -1,19 +1,38 @@
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import Button from "./Button";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+import { CgChevronDown } from "react-icons/cg";
+
 type PaginationProps = {
   currentPage: number;
   totalPages: number;
+  dataLength: number;
+  rowsperPage: number;
+  setRowsPerPage: (rowsPerPage: number) => void;
 };
 
-const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
+const Pagination = ({
+  currentPage,
+  totalPages,
+  dataLength,
+  rowsperPage,
+  setRowsPerPage,
+}: PaginationProps) => {
+  const dropdownOptions = [10, 20, 30, 50, 100];
+
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const pathname = useLocation().pathname;
+  const location = useLocation();
+
+  const pathname = location.pathname;
   const current = new URLSearchParams(Array.from(searchParams.entries()));
 
+  const filteredOptions = dropdownOptions.filter(
+    (option) => option <= dataLength
+  );
+
+  // HDR: Page change handler
   const paginationHandler = (val: number) => {
     current.set("page", val.toString());
     const search = current.toString();
@@ -55,7 +74,7 @@ const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
         <Button
           key={2}
           variant="neutral"
-          onClick={() => paginationHandler(2)}
+          onClick={() => paginationHandler(3)}
           className={`${currentPage === 3 ? "active" : ""} pagination__button`}
         >
           3
@@ -99,7 +118,7 @@ const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
     }
 
     //SUB: Always show the last two buttons
-    if (totalPages > 2) {
+    if (totalPages > 3) {
       pages.push(
         <Button
           key={totalPages - 1}
@@ -132,7 +151,26 @@ const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
 
   return (
     <div className="pagination">
-      <div>hello</div>
+      <div className="pagination__input">
+        <span>Showing</span>
+        <div className="pagination__select-wrapper">
+          <CgChevronDown size={20} className="custom_arrow" />
+          <select
+            name="page_number"
+            id="pageNumber"
+            className="pagination__select"
+            value={rowsperPage}
+            onChange={(e) => setRowsPerPage(Number(e.target.value))}
+          >
+            {filteredOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+        <span>out of {dataLength}</span>
+      </div>
       <div className="pagination__buttons">
         <Button
           className="pagination__button--nav"

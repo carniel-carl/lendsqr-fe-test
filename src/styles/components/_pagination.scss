@@ -33,24 +33,42 @@
           color: clr("text");
         }
       }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
     }
   }
-}
 
-.pagination__button--prev {
-  border-radius: 5px 0 0 5px;
-}
+  &__input {
+    @include alignCenter;
+    gap: rem(10);
+    font-size: rem(14);
+    color: clr("text-background");
 
-.pagination__button--next {
-  border-radius: 0 5px 5px 0;
-}
+    .pagination__select-wrapper {
+      position: relative;
 
-.pagination__button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.pagination__pages {
-  display: flex;
-  align-items: center;
+      .custom_arrow {
+        position: absolute;
+        right: rem(5);
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .pagination__select {
+        width: rem(80);
+        font-size: rem(14);
+        padding: rem(7) rem(12);
+        border-radius: rem(4);
+        font-size: rem(14);
+        color: clr("text");
+        background: rgba(clr("text"), 0.1);
+        cursor: pointer;
+        outline: none;
+        border: none;
+        appearance: none;
+      }
+    }
+  }
 }

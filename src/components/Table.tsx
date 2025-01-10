@@ -4,18 +4,29 @@ import { TableProps } from "../types/types";
 import DropdownMenu from "./DropdownMenu";
 import { MdFilterList } from "react-icons/md";
 import Pagination from "./Pagination";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const Table = ({
   columns,
   data,
-  rowsPerPage,
   renderActions,
   filterHeader,
   showPagination,
-  currentPage,
 }: TableProps) => {
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const currentPage = parseInt(searchParams?.get("page") as string) || 1;
+
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  //SUB: Calculate total pages
+  const totalPages = Math.ceil(data.length / rowsPerPage);
+
   //   HDR: Show the number of rows in the table
-  const paginatedData = data.slice(0, rowsPerPage);
+
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const paginatedData = data.slice(startIndex, startIndex + rowsPerPage);
 
   //   HDR: Format the data on a column
   const formatData = (value: any, type?: string) => {
@@ -28,6 +39,14 @@ const Table = ({
     }
     return value;
   };
+
+  // useLayoutEffect(() => {
+  //   const tableContainer = document.getElementById("tableId");
+  //   if (tableContainer) {
+  //     console.log("i scrolled");
+  //     tableContainer.scrollTop = 500;
+  //   }
+  // }, [location]);
 
   return (
     <section className="table-section">
@@ -80,7 +99,13 @@ const Table = ({
 
       {/*  HDR: Pagination */}
       {showPagination && (
-        <Pagination currentPage={currentPage as number} totalPages={20} />
+        <Pagination
+          currentPage={currentPage as number}
+          totalPages={totalPages}
+          dataLength={data.length}
+          rowsperPage={rowsPerPage}
+          setRowsPerPage={setRowsPerPage}
+        />
       )}
     </section>
   );
