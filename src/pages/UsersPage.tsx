@@ -85,13 +85,18 @@ const UsersPage = () => {
 
   // HDR: Render Action Component
   const actionsComponet = useCallback((data: { [key: string]: any }) => {
+    const navigationHandler = (url: string) => {
+      localStorage.setItem("userLendsqr", JSON.stringify(data));
+      navigate(url);
+    };
+
     return (
       <DropdownMenu trigger={<MdMoreVert size={20} />} showCaret={false}>
         <div className="space-y-20 ">
           <Button
             variant="neutral"
             className="neutral_link"
-            onClick={() => navigate(`/users/${data.username}`)}
+            onClick={() => navigationHandler(`/users/${data.username}`)}
           >
             <FaEye size={18} />
             <span>View Details</span>
@@ -127,6 +132,7 @@ const UsersPage = () => {
     );
   }, []);
 
+  // HDR: JSX
   return (
     <div className="userpage">
       <h1 className="userpage__heading">Users</h1>

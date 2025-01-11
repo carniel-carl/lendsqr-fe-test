@@ -1,4 +1,9 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  ForwardedRef,
+  forwardRef,
+} from "react";
 
 interface ButtonProps
   extends DetailedHTMLProps<
@@ -15,17 +20,21 @@ const VARIANT = {
   danger: "btn__danger",
   success: "btn__success",
 };
-const Button = ({
-  className,
-  variant = "primary",
-  children,
-  ...props
-}: ButtonProps) => {
-  return (
-    <button className={`btn ${VARIANT[variant]} ${className} `} {...props}>
-      {children}
-    </button>
-  );
-};
+const Button = forwardRef(
+  (
+    { className, variant = "primary", children, ...props }: ButtonProps,
+    ref: ForwardedRef<HTMLButtonElement>
+  ) => {
+    return (
+      <button
+        ref={ref}
+        className={`btn ${VARIANT[variant]} ${className} `}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
 
 export default Button;

@@ -59,3 +59,18 @@ export const formatDateTime = (date: string | Date): string => {
     hour12: true,
   });
 };
+
+// HDR: Simulate API response with delay in seconds
+/**
+ * Simulates an API response with a delay.
+ *
+ * @param {number} delayInSeconds - The delay in seconds.
+ * @returns {Promise<void>} A promise that resolves after the specified delay.
+ */
+export const delay = (delayInSeconds: number): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, delayInSeconds * 1000);
+  });
+};
