@@ -32,7 +32,7 @@ const Pagination = ({
     if (option <= dataLength) {
       return option;
     }
-    return dataLength;
+    // return dataLength;
   });
 
   // HDR: Page change handler

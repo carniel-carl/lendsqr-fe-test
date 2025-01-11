@@ -1,6 +1,8 @@
 import {
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -15,6 +17,7 @@ type LoggedInType = {
 
 type AuthContextType = {
   user: LoggedInType | null;
+  setLoggedInUser: Dispatch<SetStateAction<LoggedInType | null>>;
 } | null;
 
 const AuthContext = createContext<AuthContextType>(null);
@@ -42,7 +45,9 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: loggedInUser }}>
+    <AuthContext.Provider
+      value={{ user: loggedInUser, setLoggedInUser: setLoggedInUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

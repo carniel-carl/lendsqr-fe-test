@@ -4,8 +4,10 @@ import Button from "../components/Button";
 import LoaderIcon from "../components/LoaderIcon";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { delay } from "../lib/utils";
+import { useAuth } from "../store/context/AuthContext";
 
 const LoginForm = () => {
+  const { setLoggedInUser } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [loginData, setLoginData] = useState({
@@ -48,10 +50,9 @@ const LoginForm = () => {
         username,
         loggedInTime: new Date(),
       };
-      localStorage.setItem("loggedInUser:Lendqr", JSON.stringify(loggedInUser));
-    }
 
-    return isValid;
+      return loggedInUser;
+    }
   };
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,11 +64,12 @@ const LoginForm = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const valid = validateLogin();
-
     if (!valid) return;
     setLoading(true);
+    await delay(3);
     try {
-      await delay(3);
+      localStorage.setItem("loggedInUser:Lendqr", JSON.stringify(valid));
+      setLoggedInUser(valid);
       navigate("/");
     } catch (error) {
       console.log(error);

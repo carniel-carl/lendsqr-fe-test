@@ -4,17 +4,15 @@
 @forward "sidebar";
 
 .admin__layout {
-  // height: 100svh;
-  overflow: hidden;
   .layout-container {
-    display: flex;
-    // height: 100%;
+    display: grid;
+    grid-template-columns: rem(270) 1fr;
+
+    align-items: start;
 
     .layout__main {
-      flex: 1;
       padding: rem(60);
-      margin-bottom: rem(80);
-      // overflow-y: scroll;
+      margin-bottom: rem(450);
 
       @include screen("tablet") {
         padding: rem(40);

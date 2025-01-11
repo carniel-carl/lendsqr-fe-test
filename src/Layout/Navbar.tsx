@@ -3,20 +3,33 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
-import { FaRegBell } from "react-icons/fa";
+import { FaRegBell, FaSignOutAlt } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useMemo } from "react";
 import DropdownMenu from "../components/DropdownMenu";
+import { useAuth } from "../store/context/AuthContext";
 
 type IAprops = {
   showSidebar: boolean;
   setShowSidebar: Dispatch<SetStateAction<boolean>>;
 };
 const Navbar = ({ showSidebar, setShowSidebar }: IAprops) => {
+  const { user } = useAuth();
   // HDR: Toggle function to show or hide the sidebar
   const toggleShowSidebar = () => {
     setShowSidebar((prev) => !prev);
   };
+
+  const userData = useMemo(() => {
+    if (user) {
+      return (
+        user?.username.charAt(0).toUpperCase() +
+        user?.username.slice(1).toLowerCase()
+      );
+    } else {
+      return "Guest";
+    }
+  }, [user]);
 
   return (
     <header className="navbar">
@@ -64,8 +77,16 @@ const Navbar = ({ showSidebar, setShowSidebar }: IAprops) => {
               className="avatar_image"
             />
           </div>
-          <DropdownMenu trigger={<span>Ayodeji</span>} align="right">
-            <p>Hello</p>
+          <DropdownMenu trigger={<span>{userData}</span>} align="right">
+            <p>Hello, {userData}</p>
+            <div className="space-y-20">
+              <Link to="#">Profile</Link>
+              <Link to="#">Settings</Link>
+              <Button variant="neutral" className="logout_btn">
+                <FaSignOutAlt size={18} />
+                <span>Logout</span>
+              </Button>
+            </div>
           </DropdownMenu>
         </nav>
       </div>
