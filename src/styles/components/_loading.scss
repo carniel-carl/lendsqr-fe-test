@@ -12,10 +12,20 @@
     color: clr("text-background");
     animation: pulse 3s ease-in-out infinite;
   }
+}
 
-  > svg {
-    width: rem(35);
-    height: rem(35);
-    animation: spin 1s linear infinite;
+.loader__icon {
+  width: rem(35);
+  height: rem(35);
+  animation: spin 1s linear infinite;
+
+  &.sm {
+    width: rem(20);
+    height: rem(20);
+  }
+
+  &.lg {
+    width: rem(45);
+    height: rem(45);
   }
 }

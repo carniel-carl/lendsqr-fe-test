@@ -4,16 +4,29 @@ import LoginPage from "../pages/LoginPage";
 import DashboardLayout from "../Layout/DashboardLayout";
 import UsersPage from "../pages/UsersPage";
 import UserDetailsPage from "../pages/UserDetailsPage";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 const Routing = () => {
   return (
     <Routes>
-      <Route element={<DashboardLayout />}>
-        <Route path="/" element={<DashBoardPage />} />
-        <Route path="/users" element={<UsersPage />} />
-        <Route path="/users/:id" element={<UserDetailsPage />} />
+      {/*SUB: ====== UNPROTECTED ROUTES ======= */}
+      <Route
+        path="/login"
+        element={
+          <ProtectedRoutes accessBy="unauthenticated">
+            <LoginPage />
+          </ProtectedRoutes>
+        }
+      />
+
+      {/*SUB: ====== PROTECTED ROUTES ======= */}
+      <Route element={<ProtectedRoutes accessBy="authenticated" />}>
+        <Route element={<DashboardLayout />}>
+          <Route path="/" element={<DashBoardPage />} />
+          <Route path="/users" element={<UsersPage />} />
+          <Route path="/users/:id" element={<UserDetailsPage />} />
+        </Route>
       </Route>
-      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 };

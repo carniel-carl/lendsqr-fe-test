@@ -5,9 +5,11 @@ import {
   useEffect,
   useState,
 } from "react";
+import { LOGIN_TIME } from "../../lib/constant";
 
 type LoggedInType = {
   email: string;
+  username: string;
   loggedInTime: Date | null;
 };
 
@@ -28,7 +30,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       const loggedInTime = new Date(userObj.loggedInTime).getTime();
       const timeDifference = (currentTime - loggedInTime) / (1000 * 60);
 
-      if (timeDifference > 30) {
+      if (timeDifference > LOGIN_TIME) {
         setLoggedInUser(null);
         localStorage.removeItem("loggedInUser:Lendqr");
       } else {

@@ -1,9 +1,9 @@
-import { LuLoaderCircle } from "react-icons/lu";
+import LoaderIcon from "./LoaderIcon";
 
 const Loading = () => {
   return (
     <div className="loading__container">
-      <LuLoaderCircle />
+      <LoaderIcon />
       <p className="loading__text">Loading...</p>
     </div>
   );

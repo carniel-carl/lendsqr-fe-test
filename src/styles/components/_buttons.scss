@@ -44,6 +44,8 @@
 
 .login_btn {
   margin-top: rem(10);
+  @include alignCenter;
+  justify-content: center;
 }
 .logout_btn {
   @include alignCenter;
