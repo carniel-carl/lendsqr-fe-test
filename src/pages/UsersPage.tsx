@@ -8,15 +8,24 @@ import { FaEye } from "react-icons/fa";
 import { BsPersonCheck, BsPersonFillX } from "react-icons/bs";
 
 import Table from "../components/Table";
-import { userData } from "../data/mockData";
-import { Column, FilterDataType } from "../types/types";
+// import { userData } from "../data/mockData";
+import { Column, FilterDataType, User } from "../types/types";
 import Button from "../components/Button";
 import "../styles/pages/users.scss";
 import DropdownMenu from "../components/DropdownMenu";
 import { MdFilterList, MdMoreVert } from "react-icons/md";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import FilterComponent from "../components/FilterComponent";
+import { useQuery } from "@tanstack/react-query";
+import { getUser } from "../services";
+import Loading from "../components/Loading";
+
+type UserStatType = {
+  active: number;
+  loans: number;
+  savings: number;
+};
 
 const columns: Column[] = [
   { header: "Organisation", accessor: "organisation" },
@@ -33,11 +42,52 @@ const UsersPage = () => {
   const [searchParams] = useSearchParams();
   const filterParams = JSON.parse(searchParams.get("query") || "{}");
 
+  const {
+    data: userData,
+    isLoading,
+    error,
+  } = useQuery<User[]>({
+    queryKey: ["users"],
+    queryFn: () => getUser(),
+  });
+
+  // HDR: Calculate the statitics fromm the userData
+  const usersStat: UserStatType = useMemo(() => {
+    if (userData) {
+      return userData.reduce(
+        //@ts-ignore
+        (acc, user) => {
+          if (user.status === "active") {
+            acc.active += 1;
+          }
+          if (user.financialDetails.hasLoan) {
+            acc.loans += 1;
+          }
+          if (user.financialDetails.hasSavings) {
+            acc.savings += 1;
+          }
+          return acc;
+        },
+        {
+          active: 0,
+          loans: 0,
+          savings: 0,
+        }
+      );
+    } else {
+      return {
+        active: 0,
+        loans: 0,
+        savings: 0,
+      };
+    }
+  }, [userData]);
+
   //HDR: Function to filter data based on filterParams
   const data = useMemo(() => {
     const options: FilterDataType = filterParams;
 
-    let filterData = userData;
+    let filterData = userData as User[];
 
     if (options?.username) {
       filterData = filterData.filter((item) =>
@@ -74,10 +124,10 @@ const UsersPage = () => {
       );
     }
     return filterData;
-  }, [userData, filterParams]);
+  }, [filterParams]);
 
   // HDR: Render Action Component
-  const actionsComponet = useCallback((data: { [key: string]: any }) => {
+  const actionsComponet = (data: { [key: string]: any }) => {
     const navigationHandler = (url: string) => {
       localStorage.setItem("userLendsqr", JSON.stringify(data));
       navigate(url);
@@ -111,10 +161,10 @@ const UsersPage = () => {
         </div>
       </DropdownMenu>
     );
-  }, []);
+  };
 
   // HDR: Render Filter Component
-  const filterComponent = useCallback((column: string) => {
+  const filterComponent = (column: string) => {
     const closeDropdown = () => {
       closeDropdown();
     };
@@ -129,48 +179,56 @@ const UsersPage = () => {
         <FilterComponent name={column} closeDropdown={closeDropdown} />
       </DropdownMenu>
     );
-  }, []);
+  };
 
   // HDR: JSX
   return (
     <div className="userpage">
       <h1 className="userpage__heading">Users</h1>
+      {/* SUB: Loading */}
+      {isLoading && <Loading />}
 
-      <section className="userpage__user-tabs">
-        <UserAnalyticsCard
-          label="Users"
-          value={2000}
-          icon={LuUsers}
-          colour="pink"
-        />
-        <UserAnalyticsCard
-          label="Active users"
-          value={5000}
-          icon={HiOutlineUserGroup}
-          colour="purple"
-        />
-        <UserAnalyticsCard
-          label="Users with Loans"
-          value={2900}
-          icon={TbReportMoney}
-          colour="orange"
-        />
-        <UserAnalyticsCard
-          label="Users with Savings"
-          value={2000}
-          icon={GrMoney}
-          colour="red"
-        />
-      </section>
+      {/* SUB: Data */}
+      {userData && (
+        <>
+          <section className="userpage__user-tabs">
+            <UserAnalyticsCard
+              label="Users"
+              value={userData?.length}
+              icon={LuUsers}
+              colour="pink"
+            />
+            <UserAnalyticsCard
+              label="Active users"
+              value={usersStat?.active}
+              icon={HiOutlineUserGroup}
+              colour="purple"
+            />
+            <UserAnalyticsCard
+              label="Users with Loans"
+              value={usersStat.loans}
+              icon={TbReportMoney}
+              colour="orange"
+            />
+            <UserAnalyticsCard
+              label="Users with Savings"
+              value={usersStat.savings}
+              icon={GrMoney}
+              colour="red"
+            />
+          </section>
 
-      <Table
-        columns={columns}
-        data={data}
-        renderActions={actionsComponet}
-        filterHeader
-        showPagination
-        renderFilter={filterComponent}
-      />
+          <Table
+            columns={columns}
+            data={data}
+            renderActions={actionsComponet}
+            filterHeader
+            showPagination
+            renderFilter={filterComponent}
+          />
+        </>
+      )}
+      {/* SUB: NO Data */}
     </div>
   );
 };

@@ -22,8 +22,25 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType>(null);
 
+const getInitialUser = () => {
+  const localUser = localStorage.getItem("loggedInUser:Lendqr");
+  if (localUser) {
+    const userObj = JSON.parse(localUser);
+    const currentTime = new Date().getTime();
+    const loggedInTime = new Date(userObj.loggedInTime).getTime();
+    const timeDifference = (currentTime - loggedInTime) / (1000 * 60);
+
+    if (timeDifference > LOGIN_TIME) {
+      return null;
+    } else {
+      return userObj;
+    }
+  }
+};
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const [loggedInUser, setLoggedInUser] = useState<LoggedInType | null>(null);
+  const [loggedInUser, setLoggedInUser] = useState<LoggedInType | null>(
+    getInitialUser()
+  );
 
   useEffect(() => {
     const localUser = localStorage.getItem("loggedInUser:Lendqr");

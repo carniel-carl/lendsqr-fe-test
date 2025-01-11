@@ -18,7 +18,6 @@ const Routing = () => {
           </ProtectedRoutes>
         }
       />
-
       {/*SUB: ====== PROTECTED ROUTES ======= */}
       <Route element={<ProtectedRoutes accessBy="authenticated" />}>
         <Route element={<DashboardLayout />}>

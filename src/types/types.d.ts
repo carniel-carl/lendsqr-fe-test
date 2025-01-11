@@ -53,3 +53,67 @@ type FilterDataType = {
   status?: string;
   organisation?: string;
 };
+
+type UserProfile = {
+  bank: string;
+  tier: number;
+  userId: string;
+  company: string;
+  accountNumber: string;
+  accountBalance: number;
+};
+
+type Guarantor = {
+  email: string;
+  company: string;
+  fullName: string;
+  phoneNumber: string;
+  relationship: string;
+};
+
+type FinancialDetails = {
+  hasLoan: boolean;
+  hasSavings: boolean;
+  loanAmount: string | null;
+  savingsAmount: string | null;
+};
+
+type PersonalInformation = {
+  bvn: string;
+  gender: string;
+  children: number | string;
+  phoneNumber: string;
+  maritalStatus: string;
+  residenceType: string;
+};
+
+type EducationAndEmployment = {
+  loanRepayment: number;
+  monthlyIncome: string;
+  employmentStatus: string;
+  levelOfEducation: string;
+  sectorOfEmployment: string;
+  durationOfEmployment: string;
+};
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  status: string;
+  profile: UserProfile;
+  twitter: string;
+  facebook: string;
+  username: string;
+  createdAt: string;
+  guarantor: Guarantor;
+  instagram: string;
+  updatedAt: string;
+  dateJoined: string;
+  officeEmail: string;
+  organisation: string;
+  financialDetails: FinancialDetails;
+  personalInformation: PersonalInformation;
+  educationAndEmployment: EducationAndEmployment;
+};
