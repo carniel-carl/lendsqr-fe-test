@@ -30,7 +30,7 @@ const LoginForm = () => {
       setLoginError((prev) => ({ ...prev, email: "Email is required" }));
       isValid = false;
     } else if (!emailRegex.test(email)) {
-      setLoginError((prev) => ({ ...prev, email: "Invalid email format" }));
+      setLoginError((prev) => ({ ...prev, email: "Invalid email" }));
       isValid = false;
     } else {
       setLoginError((prev) => ({ ...prev, email: "" }));
