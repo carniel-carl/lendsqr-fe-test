@@ -15,8 +15,8 @@ const Table = ({
   showPagination,
   renderFilter,
 }: TableProps) => {
-  const location = useLocation();
-  const [searchParams] = useSearchParams();
+  // const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams?.get("page") as string) || 1;
 
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -24,9 +24,19 @@ const Table = ({
   //SUB: Calculate total pages
   const totalPages = Math.ceil(data.length / rowsPerPage);
 
-  //   HDR: Show the number of rows in the table
+  //   SUB: Remove page param from the url when data is less than rows per page
+  useEffect(() => {
+    if (data.length < rowsPerPage) {
+      setSearchParams((params) => {
+        params.delete("page");
+        return params;
+      });
+    }
+  }, [data.length, rowsPerPage, setSearchParams]);
 
-  const startIndex = (currentPage - 1) * rowsPerPage;
+  //SUB: Show the number of rows in the table
+  const startIndex =
+    data.length < rowsPerPage ? 0 : (currentPage - 1) * rowsPerPage;
   const paginatedData = data.slice(startIndex, startIndex + rowsPerPage);
 
   //   HDR: Format the data on a column

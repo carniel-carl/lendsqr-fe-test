@@ -5,9 +5,9 @@ import ScrollToTop from "./Routing/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
-      {/* <ScrollToTop>
-      </ScrollToTop> */}
-      <Routing />
+      <ScrollToTop>
+        <Routing />
+      </ScrollToTop>
     </BrowserRouter>
   );
 }
