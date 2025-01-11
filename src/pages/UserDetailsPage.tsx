@@ -4,10 +4,38 @@ import { useNavigate } from "react-router-dom";
 import "../styles/pages/userdetails.scss";
 import UserProfileHeader from "../Sections/UserProfileHeader";
 import UserProfileData from "../Sections/UserProfileData";
-import { formatObjectToList } from "../lib/utils";
+import { delay, formatObjectToList } from "../lib/utils";
+import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
 
 const UserDetailsPage = () => {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState<Record<string, any>>({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const fetchUserDetails = async () => {
+    setLoading(true);
+    try {
+      const userDataFromStorage = localStorage.getItem("userLendsqr");
+      await delay(2);
+      if (userDataFromStorage) {
+        setUserData(JSON.parse(userDataFromStorage));
+      } else {
+        console.error("No user data found in local storage");
+        setError("No user data found");
+      }
+    } catch (error) {
+      console.error("Error fetching user details", error);
+      setError("Error fetching user details");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
 
   const navigateBack = () => {
     navigate(-1);
@@ -60,22 +88,28 @@ const UserDetailsPage = () => {
           </div>
         </div>
       </div>
-      {/* Profile */}
-      <UserProfileHeader user={user} />
+      {loading && <Loading />}
+      {error && <div className="">{error}</div>}
+      {!loading && !error && (
+        <>
+          {/* Profile */}
+          <UserProfileHeader user={user} />
 
-      {/*SUB: Content */}
-      <div className="user-details__content">
-        {/* Personal Information */}
-        <UserProfileData
-          title="Socials"
-          data={formatObjectToList(user?.socials)}
-        />
-        {/* Guaranto */}
-        <UserProfileData
-          title="Guarntor"
-          data={formatObjectToList(user?.guarantor)}
-        />
-      </div>
+          {/*SUB: Content */}
+          <div className="user-details__content">
+            {/* Personal Information */}
+            <UserProfileData
+              title="Socials"
+              data={formatObjectToList(user?.socials)}
+            />
+            {/* Guaranto */}
+            <UserProfileData
+              title="Guarntor"
+              data={formatObjectToList(user?.guarantor)}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

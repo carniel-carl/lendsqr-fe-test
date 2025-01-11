@@ -1,0 +1,21 @@
+@use "../abstracts/" as *;
+
+.loading__container {
+  min-height: 30svh;
+  width: 100%;
+  @include alignCenter;
+  gap: rem(20);
+  justify-content: center;
+
+  .loading__text {
+    font-size: rem(20);
+    color: clr("text-background");
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  > svg {
+    width: rem(35);
+    height: rem(35);
+    animation: spin 1s linear infinite;
+  }
+}
