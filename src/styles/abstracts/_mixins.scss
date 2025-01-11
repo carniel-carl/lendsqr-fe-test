@@ -118,3 +118,11 @@
   font-size: rem(14);
   font-weight: fw("medium");
 }
+
+@mixin dropdownLinks {
+  transition: all 0.5s ease;
+  padding-block: rem(4);
+  &:hover {
+    color: clr("accent");
+  }
+}

@@ -77,16 +77,20 @@ const Navbar = ({ showSidebar, setShowSidebar }: IAprops) => {
               className="avatar_image"
             />
           </div>
-          <DropdownMenu trigger={<span>{userData}</span>} align="right">
+          <DropdownMenu
+            trigger={<span>{userData}</span>}
+            align="right"
+            bordered
+          >
             <p>Hello, {userData}</p>
-            <div className="space-y-20">
+            <div className="profile__dropdown-content">
               <Link to="#">Profile</Link>
               <Link to="#">Settings</Link>
-              <Button variant="neutral" className="logout_btn">
-                <FaSignOutAlt size={18} />
-                <span>Logout</span>
-              </Button>
             </div>
+            <Button variant="neutral" className="logout_btn">
+              <FaSignOutAlt size={18} />
+              <span>Logout</span>
+            </Button>
           </DropdownMenu>
         </nav>
       </div>

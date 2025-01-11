@@ -14,6 +14,17 @@
     row-gap: rem(10);
   }
 
+  &__action-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+
+    .action-dropdown_link {
+      @include dropdownLinks;
+      padding-block: 0;
+    }
+  }
+
   @include screen("tablet") {
     &__user-tabs {
       column-gap: rem(10);

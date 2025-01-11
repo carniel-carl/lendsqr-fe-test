@@ -85,20 +85,26 @@ const UsersPage = () => {
 
     return (
       <DropdownMenu trigger={<MdMoreVert size={20} />} showCaret={false}>
-        <div className="space-y-20 ">
+        <div className="userpage__action-dropdown">
           <Button
             variant="neutral"
-            className="neutral_link"
+            className="neutral_link action-dropdown_link"
             onClick={() => navigationHandler(`/users/${data.username}`)}
           >
             <FaEye size={18} />
             <span>View Details</span>
           </Button>
-          <Button variant="neutral" className="neutral_link">
+          <Button
+            variant="neutral"
+            className="neutral_link action-dropdown_link"
+          >
             <BsPersonFillX size={18} />
             <span>Blacklist User</span>
           </Button>
-          <Button variant="neutral" className="neutral_link">
+          <Button
+            variant="neutral"
+            className="neutral_link action-dropdown_link"
+          >
             <BsPersonCheck size={18} />
             <span>Activate User</span>
           </Button>

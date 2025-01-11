@@ -28,12 +28,9 @@ const Pagination = ({
   const pathname = location.pathname;
   const current = new URLSearchParams(Array.from(searchParams.entries()));
 
-  const filteredOptions = dropdownOptions.map((option) => {
-    if (option <= dataLength) {
-      return option;
-    }
-    // return dataLength;
-  });
+  const filteredOptions = dropdownOptions.filter(
+    (option) => option <= dataLength
+  );
 
   // HDR: Page change handler
   const paginationHandler = (val: number) => {
