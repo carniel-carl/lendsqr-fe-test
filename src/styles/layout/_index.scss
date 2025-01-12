@@ -12,11 +12,14 @@
 
     .layout__main {
       padding: rem(60);
-      margin-bottom: rem(250);
+      grid-column: 2/3;
+      margin-block: rem(100) rem(250);
 
       @include screen("tablet") {
+        grid-column: 1/3;
         padding: rem(40);
         margin-bottom: rem(80);
+        margin-top: 0;
       }
 
       @include screen("mobile") {

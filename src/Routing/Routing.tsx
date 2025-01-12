@@ -1,10 +1,13 @@
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import DashBoardPage from "../pages/DashBoardPage";
 import LoginPage from "../pages/LoginPage";
 import DashboardLayout from "../Layout/DashboardLayout";
-import UsersPage from "../pages/UsersPage";
-import UserDetailsPage from "../pages/UserDetailsPage";
 import ProtectedRoutes from "./ProtectedRoutes";
+
+// HDR:================ LAZY LOADING ===================
+const UsersPage = lazy(() => import("../pages/UsersPage"));
+const UserDetailsPage = lazy(() => import("../pages/UserDetailsPage"));
 
 const Routing = () => {
   return (
