@@ -4,7 +4,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: rem(10);
+  column-gap: rem(10);
+  row-gap: rem(30);
   margin-block: rem(20);
 
   &__buttons {
@@ -70,5 +71,9 @@
         appearance: none;
       }
     }
+  }
+
+  @include screen("mobile") {
+    flex-direction: column-reverse;
   }
 }

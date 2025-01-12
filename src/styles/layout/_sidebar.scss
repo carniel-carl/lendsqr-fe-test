@@ -89,7 +89,7 @@
 
   @include screen("tablet") {
     position: fixed;
-    top: calc(100svh - calc(100svh - rem(65)));
+    top: calc(100svh - calc(100svh - rem(60)));
     left: -100%;
     // height: calc(100svh);
     height: 100svh;
@@ -102,6 +102,10 @@
     &__container {
       padding-top: rem(20);
       padding-bottom: rem(5);
+
+      .sidebar__top-content {
+        gap: rem(20);
+      }
 
       .sidebar__nav {
         padding-bottom: rem(10);

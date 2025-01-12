@@ -16,11 +16,16 @@
 
       @include screen("tablet") {
         padding: rem(40);
+        margin-bottom: rem(80);
       }
 
       @include screen("mobile") {
         padding: rem(20);
       }
+    }
+
+    @include screen("tablet") {
+      grid-template-columns: 1fr;
     }
   }
   @include screen("tablet") {

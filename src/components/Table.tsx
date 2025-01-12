@@ -77,7 +77,11 @@ const Table = ({
               paginatedData?.map((row, rowIndex) => (
                 <tr key={rowIndex} className="table__row">
                   {columns.map((column) => (
-                    <td key={column.accessor} className="table__cell">
+                    <td
+                      data-cell={column.accessor}
+                      key={column.accessor}
+                      className="table__cell"
+                    >
                       {column.accessor === "actions" ? (
                         renderActions ? (
                           renderActions(row)

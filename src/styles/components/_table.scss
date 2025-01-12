@@ -7,6 +7,7 @@
     margin-bottom: rem(20);
     @include shadow(rem(3), rem(5));
     padding: 0 rem(30) rem(30);
+
     // max-height: 65svh;
     // overflow-y: auto;
 
@@ -21,8 +22,6 @@
       text-align: left;
 
       &__head {
-        // position: sticky;
-        // top: 0;
         background-color: clr("white-clr");
         z-index: 10;
 
@@ -65,6 +64,57 @@
       &__body .table__row:last-child {
         .table__cell:not(.empty) {
           border-bottom: 0;
+        }
+      }
+    }
+    @include screen("mobile") {
+      padding: 0 rem(0) rem(0);
+      border: rem(1) solid rgba(clr("text"), 0.2);
+      max-height: 120svh;
+      overflow-y: scroll;
+      padding-bottom: rem(150);
+
+      .table {
+        &__cell {
+          display: grid;
+          width: 100%;
+          grid-template-columns: 1fr 1fr;
+          border-bottom: none;
+          padding-inline: rem(20);
+          padding-block: rem(15);
+
+          &::before {
+            content: attr(data-cell) ":";
+            text-transform: capitalize;
+            font-weight: fw("bold");
+            font-size: rem(16);
+          }
+
+          // &:first-child {
+          //   padding-top: rem(30);
+          // }
+        }
+        &__head {
+          position: sticky;
+          top: 0;
+          &--cell {
+            display: none;
+          }
+          &--cell:first-of-type {
+            border-bottom: 2px solid rgba(clr("text"), 0.1);
+            display: grid;
+            justify-content: center;
+            > span {
+              display: none;
+            }
+          }
+        }
+        &__row {
+          border-bottom: 1px solid rgba(clr("text"), 0.1);
+
+          &:nth-of-type(2n) {
+            background-color: rgba(clr("text-background"), 0.08);
+          }
         }
       }
     }

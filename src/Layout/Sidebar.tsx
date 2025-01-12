@@ -1,10 +1,10 @@
-import { FaBriefcase, FaHome, FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import { sidebarData } from "../data/SidebarData";
 
 import SidebarLink from "../components/SidebarLink";
 import { useLocation } from "react-router-dom";
 import Button from "../components/Button";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { logout } from "../services";
 import OrganisationSwitcher from "../Sections/OrganisationSwitcher";
 
@@ -19,7 +19,13 @@ const Sidebar = ({ showSidebar, setShowSidebar }: IAprops) => {
   const closeSidebarMenu = () => {
     setShowSidebar(false);
   };
-
+  useEffect(() => {
+    if (showSidebar) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [showSidebar]);
   return (
     <>
       <aside className="sidebar" data-collapsed={showSidebar} id="nav-menu">
