@@ -177,6 +177,7 @@ const Pagination = ({
           variant="neutral"
           onClick={() => paginationHandler(currentPage - 1)}
           disabled={currentPage === 1}
+          data-testid="Prev"
         >
           <FaChevronLeft />
         </Button>
@@ -188,6 +189,7 @@ const Pagination = ({
           className="pagination__button--nav"
           onClick={() => paginationHandler(currentPage + 1)}
           disabled={currentPage === totalPages}
+          data-testid="Next"
         >
           <FaChevronRight />
         </Button>
