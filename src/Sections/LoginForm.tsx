@@ -66,7 +66,7 @@ const LoginForm = () => {
     const valid = validateLogin();
     if (!valid) return;
     setLoading(true);
-    await delay(3);
+    await delay(2);
     try {
       localStorage.setItem("loggedInUser:Lendqr", JSON.stringify(valid));
       setLoggedInUser(valid);

@@ -17,4 +17,9 @@ const getUser = async () => {
   }
 };
 
-export { getUser };
+const logout = () => {
+  localStorage.removeItem("loggedInUser:Lendqr");
+  window.location.reload();
+};
+
+export { getUser, logout };

@@ -39,7 +39,16 @@ const columns: Column[] = [
 const UsersPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const filterParams = JSON.parse(searchParams.get("query") || "{}");
+  const filterParams = useMemo(() => {
+    return {
+      username: searchParams.get("username"),
+      email: searchParams.get("email"),
+      phone: searchParams.get("phone"),
+      organisation: searchParams.get("organisation"),
+      status: searchParams.get("status"),
+      dateJoined: searchParams.get("dateJoined"),
+    };
+  }, [searchParams]);
 
   const {
     data: userData,
@@ -84,39 +93,39 @@ const UsersPage = () => {
 
   //HDR: Function to filter data based on filterParams
   const data = useMemo(() => {
-    const options: FilterDataType = filterParams;
+    const options = filterParams;
 
     let filterData = userData as User[];
 
     if (options?.username) {
-      filterData = filterData.filter((item) =>
+      filterData = filterData?.filter((item) =>
         item.username?.toLowerCase().includes(options.username!.toLowerCase())
       );
     }
     if (options?.email) {
-      filterData = filterData.filter(
+      filterData = filterData?.filter(
         (item) => item.email?.toLowerCase() === options.email!.toLowerCase()
       );
     }
     if (options?.organisation) {
-      filterData = filterData.filter(
+      filterData = filterData?.filter(
         (item) =>
           item.organisation?.toLowerCase() ===
           options.organisation!.toLowerCase()
       );
     }
     if (options?.status) {
-      filterData = filterData.filter(
+      filterData = filterData?.filter(
         (item) => item.status?.toLowerCase() === options.status!.toLowerCase()
       );
     }
     if (options?.phone) {
-      filterData = filterData.filter((item) =>
+      filterData = filterData?.filter((item) =>
         item.phone?.toLowerCase().includes(options.phone!.toLowerCase())
       );
     }
     if (options?.dateJoined) {
-      filterData = filterData.filter((item) =>
+      filterData = filterData?.filter((item) =>
         item.dateJoined
           ?.toLowerCase()
           .includes(options.dateJoined!.toLowerCase())

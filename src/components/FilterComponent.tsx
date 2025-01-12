@@ -13,7 +13,16 @@ type IAProps = {
 };
 const FilterComponent = ({ name, closeDropdown }: IAProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const filterParams = JSON.parse(searchParams.get("query") || "{}");
+  const filterParams = useMemo(() => {
+    return {
+      username: searchParams.get("username"),
+      email: searchParams.get("email"),
+      phone: searchParams.get("phone"),
+      organisation: searchParams.get("organisation"),
+      status: searchParams.get("status"),
+      dateJoined: searchParams.get("dateJoined"),
+    };
+  }, [searchParams]);
 
   const [filterData, setFilterData] = useState<FilterDataType>({
     username: filterParams.username || "",
@@ -52,12 +61,11 @@ const FilterComponent = ({ name, closeDropdown }: IAProps) => {
     const nonEmptyFilters = Object.fromEntries(
       Object.entries(filterData).filter(([_, value]) => value)
     );
-    if (Object.keys(nonEmptyFilters).length > 0) {
-      searchParams.set("query", JSON.stringify(nonEmptyFilters));
-    } else {
-      searchParams.delete("query");
-    }
-    setSearchParams(searchParams);
+    const query = new URLSearchParams();
+    Object.entries(nonEmptyFilters).forEach(([key, value]) => {
+      query.set(key, value);
+    });
+    setSearchParams(query);
     closeDropdown();
   };
 
@@ -69,7 +77,12 @@ const FilterComponent = ({ name, closeDropdown }: IAProps) => {
       phone: "",
       dateJoined: "",
     });
-    searchParams.delete("query");
+    searchParams.delete("username");
+    searchParams.delete("email");
+    searchParams.delete("phone");
+    searchParams.delete("organisation");
+    searchParams.delete("status");
+    searchParams.delete("dateJoined");
     setSearchParams(searchParams);
     closeDropdown();
   };

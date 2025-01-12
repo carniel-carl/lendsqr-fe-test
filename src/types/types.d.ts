@@ -46,12 +46,12 @@ type DropdownProps = {
   bordered?: boolean;
 };
 type FilterDataType = {
-  username?: string;
-  email?: string;
-  phone?: string;
-  dateJoined?: string;
-  status?: string;
-  organisation?: string;
+  username?: string | undefined;
+  email?: string | undefined;
+  phone?: string | undefined;
+  dateJoined?: string | undefined;
+  status?: string | undefined;
+  organisation?: string | undefined;
 };
 
 type UserProfile = {

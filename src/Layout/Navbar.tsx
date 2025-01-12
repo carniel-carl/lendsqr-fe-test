@@ -8,6 +8,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import DropdownMenu from "../components/DropdownMenu";
 import { useAuth } from "../store/context/AuthContext";
+import { logout } from "../services";
 
 type IAprops = {
   showSidebar: boolean;
@@ -87,7 +88,7 @@ const Navbar = ({ showSidebar, setShowSidebar }: IAprops) => {
               <Link to="#">Profile</Link>
               <Link to="#">Settings</Link>
             </div>
-            <Button variant="neutral" className="logout_btn">
+            <Button variant="neutral" className="logout_btn" onClick={logout}>
               <FaSignOutAlt size={18} />
               <span>Logout</span>
             </Button>

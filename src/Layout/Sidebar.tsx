@@ -5,6 +5,7 @@ import SidebarLink from "../components/SidebarLink";
 import { useLocation } from "react-router-dom";
 import Button from "../components/Button";
 import { Dispatch, SetStateAction } from "react";
+import { logout } from "../services";
 
 type IAprops = {
   showSidebar: boolean;
@@ -58,7 +59,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }: IAprops) => {
             ))}
           </nav>
           <div className="sidebar__bottom-content">
-            <Button variant="neutral" className="logout_btn">
+            <Button variant="neutral" className="logout_btn" onClick={logout}>
               <FaSignOutAlt size={18} />
               <span>Logout</span>
             </Button>
