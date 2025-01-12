@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import Button from "../components/Button";
 import { Dispatch, SetStateAction } from "react";
 import { logout } from "../services";
+import OrganisationSwitcher from "../Sections/OrganisationSwitcher";
 
 type IAprops = {
   showSidebar: boolean;
@@ -24,10 +25,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }: IAprops) => {
       <aside className="sidebar" data-collapsed={showSidebar} id="nav-menu">
         <div className="sidebar__container">
           <div className="sidebar__top-content">
-            <div>
-              <FaBriefcase />
-              Switch Organization
-            </div>
+            <OrganisationSwitcher />
 
             <SidebarLink
               active={pathname === "/"}

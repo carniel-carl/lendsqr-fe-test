@@ -16,6 +16,35 @@
       display: flex;
       flex-direction: column;
       gap: rem(50);
+
+      .organisation__switch {
+        &--btn {
+          @include btnBase;
+          @include alignCenter;
+          gap: rem(10);
+          padding: rem(12) rem(0) rem(12) rem(30);
+          width: 100%;
+          font-weight: fw("normal");
+          border-radius: rem(0);
+          font-size: rem(16);
+
+          &:not(:disabled):hover {
+            transform: scale(1);
+          }
+
+          &.active {
+            .arrow {
+              transform: rotate(-180deg);
+            }
+          }
+        }
+
+        &--dropdown {
+          margin-top: rem(6);
+          padding: rem(12) rem(30);
+          background: clr("background");
+        }
+      }
     }
 
     .sidebar__nav {

@@ -28,7 +28,7 @@ type Column = {
   type?: "text" | "number" | "currency" | "date";
 };
 
-type TableProps<T> = {
+type TableProps<T extends object = any> = {
   columns: Column[];
   data: T[];
   renderActions?: (row: T) => React.ReactNode;

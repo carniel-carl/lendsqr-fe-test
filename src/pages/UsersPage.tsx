@@ -132,7 +132,7 @@ const UsersPage = () => {
       );
     }
     return filterData;
-  }, [filterParams]);
+  }, [filterParams, userData]);
 
   // HDR: Render Action Component
   const actionsComponet = (data: User) => {

@@ -1,11 +1,9 @@
 import StatusBadge from "./StatusBadge";
 import { formatDateTime, formatter } from "../lib/utils";
 import { TableProps } from "../types/types";
-import DropdownMenu from "./DropdownMenu";
-import { MdFilterList } from "react-icons/md";
 import Pagination from "./Pagination";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const Table = ({
   columns,
@@ -15,29 +13,28 @@ const Table = ({
   showPagination,
   renderFilter,
 }: TableProps) => {
-  // const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams?.get("page") as string) || 1;
 
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   //SUB: Calculate total pages
-  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const totalPages = Math.ceil(data?.length / rowsPerPage);
 
   //   SUB: Remove page param from the url when data is less than rows per page
   useEffect(() => {
-    if (data.length < rowsPerPage) {
+    if (data && data.length < rowsPerPage) {
       setSearchParams((params) => {
         params.delete("page");
         return params;
       });
     }
-  }, [data.length, rowsPerPage, setSearchParams]);
+  }, [data, rowsPerPage, setSearchParams]);
 
   //SUB: Show the number of rows in the table
   const startIndex =
-    data.length < rowsPerPage ? 0 : (currentPage - 1) * rowsPerPage;
-  const paginatedData = data.slice(startIndex, startIndex + rowsPerPage);
+    data && data.length < rowsPerPage ? 0 : (currentPage - 1) * rowsPerPage;
+  const paginatedData = data?.slice(startIndex, startIndex + rowsPerPage);
 
   //   HDR: Format the data on a column
   const formatData = (value: any, type?: string) => {
@@ -51,14 +48,6 @@ const Table = ({
     return value;
   };
 
-  // useLayoutEffect(() => {
-  //   const tableContainer = document.getElementById("tableId");
-  //   if (tableContainer) {
-  //     console.log("i scrolled");
-  //     tableContainer.scrollTop = 500;
-  //   }
-  // }, [location]);
-
   return (
     <section className="table-section">
       {/*  HDR: Table component */}
@@ -66,7 +55,7 @@ const Table = ({
         <table className="table">
           <thead className="table__head">
             <tr className="table__row">
-              {columns.map((column) => (
+              {columns?.map((column) => (
                 <th key={column.accessor} className="table__head--cell">
                   <span>{column.header}</span>
                   {filterHeader &&
@@ -78,14 +67,14 @@ const Table = ({
             </tr>
           </thead>
           <tbody className="table__body">
-            {paginatedData.length === 0 ? (
+            {paginatedData && paginatedData?.length === 0 ? (
               <tr className="table__row">
                 <td className="table__cell empty" colSpan={columns.length}>
                   No Data
                 </td>
               </tr>
             ) : (
-              paginatedData.map((row, rowIndex) => (
+              paginatedData?.map((row, rowIndex) => (
                 <tr key={rowIndex} className="table__row">
                   {columns.map((column) => (
                     <td key={column.accessor} className="table__cell">
@@ -114,7 +103,7 @@ const Table = ({
         <Pagination
           currentPage={currentPage as number}
           totalPages={totalPages}
-          dataLength={data.length}
+          dataLength={data?.length}
           rowsperPage={rowsPerPage}
           setRowsPerPage={setRowsPerPage}
         />
