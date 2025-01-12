@@ -1,50 +1,92 @@
-# React + TypeScript + Vite
+# Lendsqr Frontend Interview Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The Lendsqr Frontend Interview Assessment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Demo](#demo)
+- [Project Structure](#project-structure)
+- [API Integration](#api-integration)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- User Authentication
+- User Filtering and Search
+- Pagination
+- Detailed User Views
+- Responsive Design
+- Error Handling and Notifications
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Technologies Used
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: Typed superset of JavaScript that compiles to plain JavaScript.
+- **Vite**: Fast build tool and development server.
+- **React Router**: For routing and navigation.
+- **Axios**: For making API requests.
+- **React Query**: For data fetching and state management.
+- **ESLint**: For linting and code quality.
+- **Prettier**: For code formatting.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+To get started with the project, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/carniel-carl/lendsqr-fe-test.git
+   cd lendsqr-fe-test
+   ```
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables: Create a `.env` file in the root directory and add the following:s**:
+
+   ```bash
+   VITE_API_ENDPOINT=your_api_endpoint
+   VITE_API_TOKEN=your_api_token
+   ```
+
+4. **Start the development server**:
+
+   ```bash
+   npm run dev
+
+   ```
+
+## Usage
+
+Once the development server is running, you can access the application at http://localhost:5173. The main features of the application include:
+
+- Login: Authenticate using your email and password.
+- User Management: View, filter, and manage users.
+- User Details: Click on a user to view detailed information.
+
+## Demo
+
+Check out demo **[here](https://chimezie-nmugha-lendsqr-fe-test.vercel.app/)**
+
+## Project Structure
+
+The project structure is organized as follows:
+
+src/
+├── components/ # Reusable components
+├── pages/ # Page components
+├── services/ # API service functions
+├── store/ # Context and state management
+├── styles/
+├── App.tsx
+├── main.tsx
+├── index.html
+└── vite.config.ts
