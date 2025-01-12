@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/pages/userdetails.scss";
 import UserProfileHeader from "../Sections/UserProfileHeader";
 import UserProfileData from "../Sections/UserProfileData";
-import { delay, formatObjectToList } from "../lib/utils";
+import { delay } from "../lib/utils";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import { User } from "../types/types";
@@ -58,28 +58,6 @@ const UserDetailsPage = () => {
 
   const navigateBack = () => {
     navigate(-1);
-  };
-  const user = {
-    "full name": "Grace Effiom",
-    tier: 2,
-    balance: 200000,
-    account: "9012345678",
-    bank: "Providus Bank",
-    phone: "07060780922",
-    email: "grace@gmail.com",
-    education: "B.Sc",
-    income: "₦200,000 - ₦400,000",
-    socials: {
-      twitter: "@grace_effiom",
-      facebook: "Grace Effiom",
-      instagram: "@grace_effiom",
-    },
-    guarantor: {
-      "full name": "Debby Ogana",
-      phone: "07060780922",
-      email: "debby@gmail.com",
-      relationship: "Sister",
-    },
   };
 
   return (

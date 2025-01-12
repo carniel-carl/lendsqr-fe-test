@@ -8,7 +8,7 @@ import { FaEye } from "react-icons/fa";
 import { BsPersonCheck, BsPersonFillX } from "react-icons/bs";
 
 import Table from "../components/Table";
-import { Column, FilterDataType, User } from "../types/types";
+import { Column, User } from "../types/types";
 import Button from "../components/Button";
 import "../styles/pages/users.scss";
 import DropdownMenu from "../components/DropdownMenu";
@@ -16,7 +16,7 @@ import { MdFilterList, MdMoreVert } from "react-icons/md";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 import FilterComponent from "../components/FilterComponent";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getUser } from "../services";
 import Loading from "../components/Loading";
 
@@ -37,8 +37,10 @@ const columns: Column[] = [
 ];
 
 const UsersPage = () => {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
   const filterParams = useMemo(() => {
     return {
       username: searchParams.get("username"),
@@ -140,6 +142,9 @@ const UsersPage = () => {
       localStorage.setItem("userLendsqr", JSON.stringify(data));
       navigate(url);
     };
+    const closeDropdown = () => {
+      closeDropdown();
+    };
 
     return (
       <DropdownMenu trigger={<MdMoreVert size={20} />} showCaret={false}>
@@ -155,6 +160,10 @@ const UsersPage = () => {
           <Button
             variant="neutral"
             className="neutral_link action-dropdown_link"
+            onClick={() => {
+              handleStatusUpdate(data.id, "blacklisted");
+              closeDropdown;
+            }}
           >
             <BsPersonFillX size={18} />
             <span>Blacklist User</span>
@@ -162,6 +171,7 @@ const UsersPage = () => {
           <Button
             variant="neutral"
             className="neutral_link action-dropdown_link"
+            onClick={() => handleStatusUpdate(data.id, "active")}
           >
             <BsPersonCheck size={18} />
             <span>Activate User</span>
@@ -187,6 +197,18 @@ const UsersPage = () => {
         <FilterComponent name={column} closeDropdown={closeDropdown} />
       </DropdownMenu>
     );
+  };
+
+  const handleStatusUpdate = (id: string, status: string) => {
+    queryClient.setQueryData<User[]>(["users"], (prevData) => {
+      if (!prevData) return [];
+
+      const updatedData = prevData.map((item) =>
+        item.id === id ? { ...item, status: status } : item
+      );
+
+      return updatedData;
+    });
   };
 
   // HDR: JSX
