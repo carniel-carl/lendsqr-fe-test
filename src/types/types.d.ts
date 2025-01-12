@@ -35,6 +35,7 @@ type TableProps<T extends object = any> = {
   filterHeader?: boolean;
   showPagination?: boolean;
   renderFilter?: (column: string) => React.ReactNode;
+  title?: string;
 };
 
 type DropdownProps = {

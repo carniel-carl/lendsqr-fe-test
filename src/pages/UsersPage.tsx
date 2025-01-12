@@ -227,6 +227,7 @@ const UsersPage = () => {
           </section>
 
           <Table
+            title="Users data"
             columns={columns}
             data={data}
             renderActions={actionsComponet}

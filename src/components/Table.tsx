@@ -12,6 +12,7 @@ const Table = ({
   filterHeader,
   showPagination,
   renderFilter,
+  title,
 }: TableProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams?.get("page") as string) || 1;
@@ -53,6 +54,7 @@ const Table = ({
       {/*  HDR: Table component */}
       <div className="table-container" id="tableId">
         <table className="table">
+          <caption>{title}</caption>
           <thead className="table__head">
             <tr className="table__row">
               {columns?.map((column) => (

@@ -21,6 +21,10 @@
       color: clr("text-background");
       text-align: left;
 
+      caption {
+        display: none;
+      }
+
       &__head {
         background-color: clr("white-clr");
         z-index: 10;
@@ -67,7 +71,7 @@
         }
       }
     }
-    @include screen("mobile") {
+    @include screen("tablet") {
       padding: 0 rem(0) rem(0);
       border: rem(1) solid rgba(clr("text"), 0.2);
       max-height: 120svh;
@@ -75,6 +79,16 @@
       padding-bottom: rem(150);
 
       .table {
+        caption {
+          display: table-caption;
+          font-size: rem(18);
+          text-align: center;
+          position: sticky;
+          top: 0;
+          padding-block: rem(20);
+          text-transform: uppercase;
+          background: rgba(clr("text-background"), 0.3);
+        }
         &__cell {
           display: grid;
           width: 100%;

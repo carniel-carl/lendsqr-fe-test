@@ -118,4 +118,58 @@ $base: "user-details";
       border: none;
     }
   }
+
+  @include screen("tablet") {
+    &__header {
+      flex-direction: column;
+      row-gap: rem(20);
+    }
+
+    &__profile {
+      .#{$base}__info {
+        .vertical__rule {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include screen("mobile") {
+    &__profile {
+      .#{$base}__data {
+        .#{$base}__info {
+          flex-direction: column;
+          row-gap: rem(10);
+          align-items: start;
+          .vertical__rule {
+            display: none;
+          }
+        }
+      }
+
+      .#{$base}__tabs {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        .#{$base}__tab {
+          @include btnBase;
+          border-radius: 0;
+          padding: rem(10) rem(25);
+          font-weight: fw("normal");
+          font-size: rem(16);
+          border-bottom: rem(2) solid transparent;
+
+          &:hover {
+            transform: scale(1);
+            color: clr("accent");
+          }
+
+          &.active {
+            border-color: clr("accent");
+            color: clr("accent");
+          }
+        }
+      }
+    }
+  }
 }
