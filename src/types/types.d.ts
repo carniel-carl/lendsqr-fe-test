@@ -28,10 +28,10 @@ type Column = {
   type?: "text" | "number" | "currency" | "date";
 };
 
-type TableProps = {
+type TableProps<T> = {
   columns: Column[];
-  data: { [key: string]: any }[];
-  renderActions?: (row: { [key: string]: any }) => React.ReactNode;
+  data: T[];
+  renderActions?: (row: T) => React.ReactNode;
   filterHeader?: boolean;
   showPagination?: boolean;
   renderFilter?: (column: string) => React.ReactNode;
@@ -66,7 +66,8 @@ type UserProfile = {
 type Guarantor = {
   email: string;
   company: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   phoneNumber: string;
   relationship: string;
 };
@@ -82,7 +83,6 @@ type PersonalInformation = {
   bvn: string;
   gender: string;
   children: number | string;
-  phoneNumber: string;
   maritalStatus: string;
   residenceType: string;
 };
@@ -93,12 +93,13 @@ type EducationAndEmployment = {
   employmentStatus: string;
   levelOfEducation: string;
   sectorOfEmployment: string;
-  durationOfEmployment: string;
+  durationOfEmployment: number;
 };
 
 type User = {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
   status: string;

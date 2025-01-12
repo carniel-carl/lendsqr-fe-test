@@ -8,7 +8,6 @@ import { FaEye } from "react-icons/fa";
 import { BsPersonCheck, BsPersonFillX } from "react-icons/bs";
 
 import Table from "../components/Table";
-// import { userData } from "../data/mockData";
 import { Column, FilterDataType, User } from "../types/types";
 import Button from "../components/Button";
 import "../styles/pages/users.scss";
@@ -127,7 +126,7 @@ const UsersPage = () => {
   }, [filterParams]);
 
   // HDR: Render Action Component
-  const actionsComponet = (data: { [key: string]: any }) => {
+  const actionsComponet = (data: User) => {
     const navigationHandler = (url: string) => {
       localStorage.setItem("userLendsqr", JSON.stringify(data));
       navigate(url);
@@ -139,7 +138,7 @@ const UsersPage = () => {
           <Button
             variant="neutral"
             className="neutral_link action-dropdown_link"
-            onClick={() => navigationHandler(`/users/${data.username}`)}
+            onClick={() => navigationHandler(`/users/${data.id}`)}
           >
             <FaEye size={18} />
             <span>View Details</span>
@@ -229,6 +228,7 @@ const UsersPage = () => {
         </>
       )}
       {/* SUB: NO Data */}
+      {error && <div className="error-container">Error fetching data</div>}
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import StarRating from "../components/StarRating";
 import { formatter } from "../lib/utils";
+import { User } from "../types/types";
 
-const UserProfileHeader = ({ user }: any) => {
+const UserProfileHeader = ({ user }: { user: User }) => {
   return (
     <section className="user-details__profile">
       {/*SUB: Profile Data */}
@@ -11,7 +12,7 @@ const UserProfileHeader = ({ user }: any) => {
         </div>
         <div className="user-details__info">
           <div>
-            <h2 className="user-details__name">{user?.["full name"]}</h2>
+            <h2 className="user-details__name">{user?.name}</h2>
             <p className="user-details__code">LSQFf587g90</p>
           </div>
           <span className="vertical__rule" />
@@ -19,7 +20,7 @@ const UserProfileHeader = ({ user }: any) => {
           <div>
             <h4 className="user-details__tier">User's Tier</h4>
 
-            <StarRating rating={user.tier} />
+            <StarRating rating={user?.profile.tier} />
           </div>
 
           <span className="vertical__rule" />
@@ -27,11 +28,11 @@ const UserProfileHeader = ({ user }: any) => {
           <div>
             <p className="user-details__balance">
               {formatter({ style: "currency", currency: "NGN" }).format(
-                user.balance
+                user.profile.accountBalance
               )}
             </p>
             <span className="user-details__account">
-              {user.account} / {user.bank}
+              {user.profile.accountNumber} / {user.profile.bank}
             </span>
           </div>
         </div>

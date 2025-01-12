@@ -7,20 +7,39 @@ import UserProfileData from "../Sections/UserProfileData";
 import { delay, formatObjectToList } from "../lib/utils";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
+import { User } from "../types/types";
+import { useParams } from "react-router-dom";
 
 const UserDetailsPage = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState<Record<string, any>>({});
+  const [userData, setUserData] = useState<User>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { id } = useParams();
 
+  //HDR: Check if the param id is the same as the local storage user details
+  const validateDetails = (data: User) => {
+    if (data.id !== id) {
+      return false;
+    }
+    return true;
+  };
+
+  // HDR: Stimulate API Request to fetch user details
+  //Check if the param id is the same as the local storage user details
   const fetchUserDetails = async () => {
     setLoading(true);
     try {
       const userDataFromStorage = localStorage.getItem("userLendsqr");
       await delay(2);
       if (userDataFromStorage) {
-        setUserData(JSON.parse(userDataFromStorage));
+        const data = JSON.parse(userDataFromStorage);
+        const isValid = validateDetails(data);
+        if (isValid) {
+          setUserData(data);
+        } else {
+          setError("No user data found");
+        }
       } else {
         console.error("No user data found in local storage");
         setError("No user data found");
@@ -76,36 +95,62 @@ const UserDetailsPage = () => {
           <span>Back to Users</span>
         </Button>
 
-        <div className="user-details__header">
-          <h2 className="user-details__header--heading">User Details </h2>
-          <div className="user-details__actions">
-            <Button variant="danger" className="action_btn">
-              Blacklist User
-            </Button>
-            <Button variant="success" className="action_btn">
-              Activate User
-            </Button>
+        {!loading && !error && (
+          <div className="user-details__header">
+            <h2 className="user-details__header--heading">User Details </h2>
+            <div className="user-details__actions">
+              <Button variant="danger" className="action_btn">
+                Blacklist User
+              </Button>
+              <Button variant="success" className="action_btn">
+                Activate User
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {loading && <Loading />}
-      {error && <div className="">{error}</div>}
-      {!loading && !error && (
+      {error && <div className="error-container">{error}</div>}
+      {!loading && !error && userData && (
         <>
           {/* Profile */}
-          <UserProfileHeader user={user} />
+          <UserProfileHeader user={userData} />
 
           {/*SUB: Content */}
           <div className="user-details__content">
-            {/* Personal Information */}
             <UserProfileData
-              title="Socials"
-              data={formatObjectToList(user?.socials)}
+              type="personal"
+              title="Personal Information"
+              data={{
+                ...userData.personalInformation,
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                email: userData.email,
+                phone: userData.phone,
+              }}
             />
-            {/* Guaranto */}
             <UserProfileData
-              title="Guarntor"
-              data={formatObjectToList(user?.guarantor)}
+              type="educationAndEmployment"
+              title="Education & Employment"
+              data={{
+                ...userData?.educationAndEmployment,
+                officeEmail: userData.officeEmail,
+              }}
+            />
+            <UserProfileData
+              type="social"
+              title="Socials"
+              data={{
+                facebook: userData.facebook,
+                twitter: userData.twitter,
+                instagram: userData.instagram,
+              }}
+            />
+
+            <UserProfileData
+              type="guarantor"
+              title="Guarantor"
+              data={userData?.guarantor}
             />
           </div>
         </>

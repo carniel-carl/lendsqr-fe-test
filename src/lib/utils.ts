@@ -37,8 +37,11 @@ export const formatObjectToList = (object: {
   [key: string]: string | number;
 }) => {
   return Object.entries(object).map(([key, value]) => ({
-    label: key,
-    value: value,
+    label: key.replace(/([a-z])([A-Z])/g, "$1 $2"),
+    value:
+      typeof value === "number"
+        ? formatter({ decimal: 0 }).format(value)
+        : value,
   }));
 };
 

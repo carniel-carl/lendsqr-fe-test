@@ -43,3 +43,12 @@
 .label {
   @include label;
 }
+
+.error-container {
+  color: clr("error");
+  font-size: rem(20);
+  text-align: center;
+  min-height: 20svh;
+  @include alignCenter;
+  justify-content: center;
+}
