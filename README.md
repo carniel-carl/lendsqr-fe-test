@@ -13,7 +13,6 @@ The Lendsqr Frontend Interview Assessment.
 - [Usage](#usage)
 - [Demo](#demo)
 - [Project Structure](#project-structure)
-- [API Integration](#api-integration)
 
 ## Features
 
@@ -72,7 +71,11 @@ Once the development server is running, you can access the application at http:/
 - User Management: View, filter, and manage users.
 - User Details: Click on a user to view detailed information.
 
-## Demo
+## Demo / Preview
+
+Here’s a preview:
+
+![Project Screenshot](./public/images/preview.png)
 
 Check out demo **[here](https://chimezie-nmugha-lendsqr-fe-test.vercel.app/)**
 
@@ -80,13 +83,63 @@ Check out demo **[here](https://chimezie-nmugha-lendsqr-fe-test.vercel.app/)**
 
 The project structure is organized as follows:
 
+```
 src/
-├── components/ # Reusable components
-├── pages/ # Page components
-├── services/ # API service functions
-├── store/ # Context and state management
-├── styles/
 ├── App.tsx
+├── Layout
+│   ├── DashboardLayout.tsx
+│   ├── Logo.tsx
+│   ├── Navbar.tsx
+│   └── Sidebar.tsx
+├── Routing
+│   ├── ProtectedRoutes.tsx
+│   ├── Routing.tsx
+│   └── ScrollToTop.tsx
+├── Sections
+│   ├── LoginForm.tsx
+│   ├── OrganisationSwitcher.tsx
+│   ├── UserProfileData.tsx
+│   └── UserProfileHeader.tsx
+├── components
+│   ├── Button.tsx
+│   ├── CustomSelect.tsx
+│   ├── DropdownBox.tsx
+│   ├── DropdownMenu.tsx
+│   ├── FilterComponent.tsx
+│   ├── Input.tsx
+│   ├── LoaderIcon.tsx
+│   ├── Loading.tsx
+│   ├── Pagination.tsx
+│   ├── SidebarLink.tsx
+│   ├── StarRating.tsx
+│   ├── StatusBadge.tsx
+│   ├── Table.tsx
+│   └── UserAnalyticsCard.tsx
+├── data
+│   ├── SidebarData.ts
+│   ├── mockData.ts
+│   ├── organisations-data.ts
+│   └── status-data.ts
+├── hooks
+│   ├── useClickOutside.tsx
+│   └── useDebounce.ts
+├── lib
+│   ├── constant.ts
+│   └── utils.ts
 ├── main.tsx
-├── index.html
-└── vite.config.ts
+├── pages
+│   ├── DashBoardPage.tsx
+│   ├── LoginPage.tsx
+│   ├── UserDetailsPage.tsx
+│   └── UsersPage.tsx
+├── services
+│   └── index.ts
+├── store
+│   └── context
+│       ├── AuthContext.tsx
+│       └── Context.tsx
+├── styles  // All SCSS Styles
+├── types
+│   └── types.d.ts
+└── vite-env.d.ts
+```
