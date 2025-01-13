@@ -63,7 +63,7 @@ const UsersPage = () => {
 
   // HDR: Calculate the statitics fromm the userData
   const usersStat: UserStatType = useMemo(() => {
-    if (userData) {
+    if (Array.isArray(userData)) {
       return userData.reduce(
         //@ts-ignore
         (acc, user) => {
@@ -221,7 +221,7 @@ const UsersPage = () => {
       {/* SUB: Data */}
       {userData && (
         <>
-          <section className="userpage__user-tabs">
+          <section className="userpage__user-tabs" data-testid="user-data">
             <UserAnalyticsCard
               label="Users"
               value={userData?.length}

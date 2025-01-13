@@ -20,7 +20,7 @@ type AuthContextType = {
   setLoggedInUser: Dispatch<SetStateAction<LoggedInType | null>>;
 } | null;
 
-const AuthContext = createContext<AuthContextType>(null);
+export const AuthContext = createContext<AuthContextType>(null);
 
 const getInitialUser = () => {
   const localUser = localStorage.getItem("loggedInUser:Lendqr");

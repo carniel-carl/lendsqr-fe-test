@@ -15,6 +15,14 @@ type SidebarDataType = {
   }[];
 }[];
 
+type PaginationProps = {
+  currentPage: number;
+  totalPages: number;
+  dataLength: number;
+  rowsperPage: number;
+  setRowsPerPage: (rowsPerPage: number) => void;
+};
+
 type UserAnalyticsCardProps = {
   icon: IconType;
   label: string;

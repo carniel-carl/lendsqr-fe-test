@@ -3,14 +3,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { CgChevronDown } from "react-icons/cg";
-
-type PaginationProps = {
-  currentPage: number;
-  totalPages: number;
-  dataLength: number;
-  rowsperPage: number;
-  setRowsPerPage: (rowsPerPage: number) => void;
-};
+import { PaginationProps } from "../types/types";
 
 const Pagination = ({
   currentPage,

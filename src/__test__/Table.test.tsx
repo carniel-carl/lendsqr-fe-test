@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from "@testing-library/react";
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import "@testing-library/jest-dom/vitest";
+import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 import Table from "../components/Table";
 import { Column, TableProps } from "../types/types";

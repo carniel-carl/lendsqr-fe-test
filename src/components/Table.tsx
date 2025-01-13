@@ -35,7 +35,9 @@ const Table = ({
   //SUB: Show the number of rows in the table
   const startIndex =
     data && data.length < rowsPerPage ? 0 : (currentPage - 1) * rowsPerPage;
-  const paginatedData = data?.slice(startIndex, startIndex + rowsPerPage);
+  const paginatedData = Array.isArray(data)
+    ? data?.slice(startIndex, startIndex + rowsPerPage)
+    : [];
 
   //   HDR: Format the data on a column
   const formatData = (value: any, type?: string) => {
@@ -77,7 +79,11 @@ const Table = ({
               </tr>
             ) : (
               paginatedData?.map((row, rowIndex) => (
-                <tr key={rowIndex} className="table__row">
+                <tr
+                  key={rowIndex}
+                  className="table__row"
+                  data-testid="table_row"
+                >
                   {columns.map((column) => (
                     <td
                       data-cell={column.accessor}
