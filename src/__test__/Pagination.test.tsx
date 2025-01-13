@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import "@testing-library/jest-dom";
-import { MemoryRouter, useSearchParams, useNavigate } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 
 import { PaginationProps } from "../types/types";
 import Pagination from "../components/Pagination";

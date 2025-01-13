@@ -97,8 +97,8 @@ type PersonalInformation = {
 };
 
 type EducationAndEmployment = {
-  loanRepayment: number;
-  monthlyIncome: string;
+  loanRepayment?: number;
+  monthlyIncome?: string;
   employmentStatus: string;
   levelOfEducation: string;
   sectorOfEmployment: string;

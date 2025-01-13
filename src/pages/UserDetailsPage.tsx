@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import "../styles/pages/userdetails.scss";
 import UserProfileHeader from "../Sections/UserProfileHeader";
 import UserProfileData from "../Sections/UserProfileData";
-import { delay } from "../lib/utils";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import { User } from "../types/types";
 import { useParams } from "react-router-dom";
+import { fetchUserDetails } from "../services";
 
 const UserDetailsPage = () => {
   const navigate = useNavigate();
@@ -17,43 +17,28 @@ const UserDetailsPage = () => {
   const [error, setError] = useState("");
   const { id } = useParams();
 
-  //HDR: Check if the param id is the same as the local storage user details
-  const validateDetails = (data: User) => {
-    if (data.id !== id) {
-      return false;
-    }
-    return true;
-  };
-
   // HDR: Stimulate API Request to fetch user details
   //Check if the param id is the same as the local storage user details
-  const fetchUserDetails = async () => {
+  const fetchUserData = async () => {
     setLoading(true);
     try {
-      const userDataFromStorage = localStorage.getItem("userLendsqr");
-      await delay(2);
-      if (userDataFromStorage) {
-        const data = JSON.parse(userDataFromStorage);
-        const isValid = validateDetails(data);
-        if (isValid) {
-          setUserData(data);
-        } else {
-          setError("No user data found");
-        }
+      const user = await fetchUserDetails(id ? id : "");
+      if (user) {
+        setUserData(user);
       } else {
-        console.error("No user data found in local storage");
         setError("No user data found");
       }
     } catch (error) {
-      console.error("Error fetching user details", error);
-      setError("Error fetching user details");
+      if (error instanceof Error && error.message) {
+        setError(error.message);
+      }
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchUserDetails();
+    fetchUserData();
   }, []);
 
   const navigateBack = () => {
@@ -111,7 +96,7 @@ const UserDetailsPage = () => {
               type="educationAndEmployment"
               title="Education & Employment"
               data={{
-                ...userData?.educationAndEmployment,
+                ...(userData?.educationAndEmployment || {}),
                 officeEmail: userData.officeEmail,
               }}
             />

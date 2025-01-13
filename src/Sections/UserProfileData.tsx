@@ -98,15 +98,19 @@ const EduAndEmp = ({ data }: { data: EduAndEmpType }) => {
         <p className="user-profile-data__label">Monthly income</p>
         <p className="user-profile-data__value">
           &#x20A6;
-          {formatter({}).format(parseInt(data?.monthlyIncome.split("-")[0]))} -
-          &#x20A6;
-          {formatter({}).format(parseInt(data?.monthlyIncome.split("-")[1]))}
+          {formatter({}).format(
+            parseInt(data?.monthlyIncome?.split("-")[0] || "0")
+          )}{" "}
+          - &#x20A6;
+          {formatter({}).format(
+            parseInt(data?.monthlyIncome?.split("-")[1] || "0")
+          )}
         </p>
       </div>
       <div className="user-profile-data__item">
         <p className="user-profile-data__label">loan repayment</p>
         <p className="user-profile-data__value">
-          {formatter({ decimal: 0 }).format(data?.loanRepayment)}
+          {formatter({ decimal: 0 }).format(data?.loanRepayment || 0)}
         </p>
       </div>
     </div>
